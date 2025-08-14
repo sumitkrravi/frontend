@@ -1,6 +1,6 @@
 // src/pages/Login.js
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify"; // ✅ Toast import
 
@@ -69,6 +69,15 @@ export default function Login() {
               Login
             </button>
           </div>
+
+          <div className="text-center">
+          <small>
+            Create an account?{" "}
+            <Link to="/signup" className="text-decoration-none">
+              Signup here
+            </Link>
+          </small>
+        </div>
         </form>
       </div>
     </div>
