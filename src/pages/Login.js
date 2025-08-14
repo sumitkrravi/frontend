@@ -17,26 +17,18 @@ export default function Login() {
     try {
       const res = await axios.post("http://localhost:5000/api/auth/login", formData);
 
-      // ✅ Save user and token to localStorage
       localStorage.setItem("user", JSON.stringify(res.data.user));
       localStorage.setItem("token", res.data.token);
 
-      // ✅ Success Toast
-      toast.success(res.data.message || "Login successful", {
-        position: "top-right",
-        autoClose: 3000,
-      });
+      toast.success(res.data.message || "Login successful", { theme: "colored" });
 
-      // ✅ Redirect after short delay (so toast visible)
-      setTimeout(() => navigate("/dashboard"), 1000);
-
+      if (res.data.user.role === "admin") {
+        navigate("/Admin-dashboard");
+      } else {
+        navigate("/dashboard");
+      }
     } catch (error) {
-      console.error("Login error:", error);
-      // ✅ Error Toast
-      toast.error(error.response?.data?.message || "Something went wrong", {
-        position: "top-right",
-        autoClose: 3000,
-      });
+      toast.error(error.response?.data?.message || "Something went wrong", { theme: "colored" });
     }
   };
 
