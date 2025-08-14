@@ -58,7 +58,6 @@ const Footer = () => {
       {/* BOTTOM SECTION (Contact Info + Copyright) */}
       <div className="footer-bottom">
         <p>&copy; e-Cyber Cafe All rights reserved</p>
-        <p>Last updated : 15-07-2025</p>
       </div>
     </footer>
   );
