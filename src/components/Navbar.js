@@ -17,16 +17,16 @@ export default function Navbar() {
 
       <div className="collapse navbar-collapse justify-content-end">
         <ul className="navbar-nav">
-          <li className="nav-item">
+          
+          {/* <li className="nav-item">
             <Link className="nav-link" to="/">Home</Link>
-          </li>
-
-          <li className="nav-item">
-            <Link className="nav-link" to="/form-request">Apply</Link>
-          </li>
+          </li> */}
 
           {!user ? (
             <>
+              <li className="nav-item">
+                <Link className="nav-link" to="/">Home</Link>
+              </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/login">Login</Link>
               </li>
@@ -40,7 +40,7 @@ export default function Navbar() {
                 <Link className="nav-link" to="/dashboard">Dashboard</Link>
               </li>
               <li className="nav-item">
-                <span className="nav-link">Hi, {user.name.split(" ")[0]}</span>
+                <span className="nav-link">Welcome, {user.name.split(" ")[0]}</span>
               </li>
               {/* <li className="nav-item">
                 <button className="btn btn-d  anger btn-sm ms-2" onClick={handleLogout}>Logout</button>
