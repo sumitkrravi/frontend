@@ -45,3 +45,16 @@
     margin: 5px;
   }
 }
+
+/* Force card to take full width in small screens */
+@media (max-width: 576px) {
+  .slick-slide > div {
+    display: flex !important;
+    justify-content: center;
+  }
+  .service-card {
+    width: 100%;
+    padding: 15px;     /* less padding to fit nicely */
+  }
+}
+
