@@ -35,3 +35,13 @@
 
 .custom-arrow.next { right: -60px; }
 .custom-arrow.prev { left: -60px; }
+
+/* Arrow for mobile */
+@media (max-width: 576px) {
+  .custom-arrow.next { right: 5px; }
+  .custom-arrow.prev { left: 5px; }
+  .service-card {
+    padding: 20px;
+    margin: 5px;
+  }
+}
