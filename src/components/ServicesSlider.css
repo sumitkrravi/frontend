@@ -8,12 +8,13 @@
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
+/* Hover Effect */
 .service-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
-/* Custom Professional Arrows */
+/* Custom Arrow Styling */
 .custom-arrow {
   position: absolute;
   top: 45%;
@@ -27,26 +28,14 @@
   cursor: pointer;
   transition: all 0.3s ease;
 }
-
 .custom-arrow:hover {
   transform: translateY(-50%) scale(1.1);
   box-shadow: 0 6px 18px rgba(0,0,0,0.2);
 }
+.custom-arrow.next { right: -10px; }
+.custom-arrow.prev { left: -10px; }
 
-.custom-arrow.next { right: -60px; }
-.custom-arrow.prev { left: -60px; }
-
-/* Arrow for mobile */
-@media (max-width: 576px) {
-  .custom-arrow.next { right: 5px; }
-  .custom-arrow.prev { left: 5px; }
-  .service-card {
-    padding: 20px;
-    margin: 5px;
-  }
-}
-
-/* Force card to take full width in small screens */
+/* Fix for mobile cards width & arrows */
 @media (max-width: 576px) {
   .slick-slide > div {
     display: flex !important;
@@ -54,7 +43,9 @@
   }
   .service-card {
     width: 100%;
-    padding: 15px;     /* less padding to fit nicely */
+    padding: 20px;
+    margin: 5px;
   }
+  .custom-arrow.next { right: 5px; }
+  .custom-arrow.prev { left: 5px; }
 }
-
