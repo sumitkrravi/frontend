@@ -1,3 +1,4 @@
+// CardSlider.js
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -6,10 +7,10 @@ import { Navigation } from "swiper/modules";
 
 const CardSlider = () => {
   const cards = [
-    { id: 1, title: "Card 1", desc: "This is card one" },
-    { id: 2, title: "Card 2", desc: "This is card two" },
-    { id: 3, title: "Card 3", desc: "This is card three" },
-    { id: 4, title: "Card 4", desc: "This is card four" },
+    { id: 1, title: "Card 1", text: "This is card one content" },
+    { id: 2, title: "Card 2", text: "This is card two content" },
+    { id: 3, title: "Card 3", text: "This is card three content" },
+    { id: 4, title: "Card 4", text: "This is card four content" },
   ];
 
   return (
@@ -18,16 +19,14 @@ const CardSlider = () => {
         modules={[Navigation]}
         navigation
         spaceBetween={20}
-        breakpoints={{
-          0: { slidesPerView: 1 }, // mobile me 1 card
-          768: { slidesPerView: 3 }, // desktop me 3 card
-        }}
+        slidesPerView={1} // always one card per slide
+        loop={true}
       >
         {cards.map((card) => (
           <SwiperSlide key={card.id}>
             <div className="card">
-              <h3>{card.title}</h3>
-              <p>{card.desc}</p>
+              <h2>{card.title}</h2>
+              <p>{card.text}</p>
             </div>
           </SwiperSlide>
         ))}
