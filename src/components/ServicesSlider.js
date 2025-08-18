@@ -2,45 +2,59 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "./ServiceSlider.css"; // custom css
+
+const services = [
+  {
+    title: "Web Development",
+    description: "We build fast, responsive, and modern websites.",
+  },
+  {
+    title: "Mobile Apps",
+    description: "High-performance mobile apps for Android and iOS.",
+  },
+  {
+    title: "UI/UX Design",
+    description: "Beautiful and user-friendly designs for your projects.",
+  },
+  {
+    title: "Cloud Solutions",
+    description: "Secure, scalable, and efficient cloud services.",
+  },
+  {
+    title: "Digital Marketing",
+    description: "Grow your business with targeted marketing strategies.",
+  },
+];
 
 const ServiceSlider = () => {
   const settings = {
-    dots: false, // default desktop
+    dots: true,
     infinite: true,
-    speed: 500,
-    slidesToShow: 3, // desktop pe 3
+    speed: 600,
+    slidesToShow: 3,
     slidesToScroll: 1,
-    arrows: true, // desktop pe arrows show karega
+    arrows: true,
     responsive: [
       {
-        breakpoint: 768, // mobile ke liye
+        breakpoint: 768, // Mobile
         settings: {
-          slidesToShow: 1, // mobile me ek card
+          slidesToShow: 1,
           slidesToScroll: 1,
-          arrows: false, // mobile me arrows band
-          dots: true, // mobile me dots on
+          arrows: false, // no arrows on mobile
+          dots: true, // show dots only
         },
       },
     ],
   };
 
-  const services = [
-    { id: 1, title: "Service 1", desc: "This is service 1" },
-    { id: 2, title: "Service 2", desc: "This is service 2" },
-    { id: 3, title: "Service 3", desc: "This is service 3" },
-    { id: 4, title: "Service 4", desc: "This is service 4" },
-    { id: 5, title: "Service 5", desc: "This is service 5" },
-  ];
-
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 py-8">
+    <div className="slider-container">
       <Slider {...settings}>
-        {services.map((service) => (
-          <div key={service.id} className="p-3">
-            <div className="bg-white rounded-2xl shadow-md p-6 text-center">
-              <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
-              <p className="text-gray-600">{service.desc}</p>
-            </div>
+        {services.map((service, index) => (
+          <div key={index} className="card">
+            <h3>{service.title}</h3>
+            <p>{service.description}</p>
           </div>
         ))}
       </Slider>
