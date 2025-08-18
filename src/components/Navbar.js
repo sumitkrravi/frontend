@@ -1,21 +1,18 @@
 import React, { useState } from "react";
-import "./Navbar.css"; // styling yaha hogi
+import "./Navbar.css"; // styling alag file me rakhenge
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
-    <>
+    <div>
       <nav className="navbar">
         <div className="logo">E-Cyber Café</div>
 
+        {/* Hamburger button */}
         <div
           className={`hamburger ${isOpen ? "open" : ""}`}
-          onClick={toggleMenu}
+          onClick={() => setIsOpen(!isOpen)}
         >
           <span></span>
           <span></span>
@@ -23,14 +20,14 @@ function Navbar() {
         </div>
       </nav>
 
-      {/* Menu */}
+      {/* Menu items niche open hoke push karenge */}
       <div className={`menu ${isOpen ? "show" : ""}`}>
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/services">Services</a>
+        <a href="/contact">Contact</a>
       </div>
-    </>
+    </div>
   );
 }
 
