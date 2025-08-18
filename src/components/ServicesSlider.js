@@ -2,28 +2,24 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./ServiceSlider.css"; // custom css
+import "./ServiceSlider.css";
 
 const services = [
   {
-    title: "Web Development",
-    description: "We build fast, responsive, and modern websites.",
+    title: "Service 1",
+    description: "This is service 1",
   },
   {
-    title: "Mobile Apps",
-    description: "High-performance mobile apps for Android and iOS.",
+    title: "Service 2",
+    description: "This is service 2",
   },
   {
-    title: "UI/UX Design",
-    description: "Beautiful and user-friendly designs for your projects.",
+    title: "Service 3",
+    description: "This is service 3",
   },
   {
-    title: "Cloud Solutions",
-    description: "Secure, scalable, and efficient cloud services.",
-  },
-  {
-    title: "Digital Marketing",
-    description: "Grow your business with targeted marketing strategies.",
+    title: "Service 4",
+    description: "This is service 4",
   },
 ];
 
@@ -41,8 +37,8 @@ const ServiceSlider = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          arrows: false, // no arrows on mobile
-          dots: true, // show dots only
+          arrows: false, // hide arrows in mobile
+          dots: true, // show dots
         },
       },
     ],
@@ -52,9 +48,11 @@ const ServiceSlider = () => {
     <div className="slider-container">
       <Slider {...settings}>
         {services.map((service, index) => (
-          <div key={index} className="card">
-            <h3>{service.title}</h3>
-            <p>{service.description}</p>
+          <div key={index}>
+            <div className="card">
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+            </div>
           </div>
         ))}
       </Slider>
