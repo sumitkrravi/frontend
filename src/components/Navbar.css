@@ -1,189 +1,88 @@
-/* ---------------- Base Navbar ---------------- */
+/* Navbar */
 .navbar {
   width: 100%;
-  border-bottom: 1px solid #ddd;
-  position: sticky;
-  top: 0;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: relative;
   z-index: 1000;
-  transition: background-color 0.3s ease;
-  animation: slideDownNavbar 0.5s ease;
 }
 
 .nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.8rem 1.2rem;
-  width: 100%;
+  padding: 15px 20px;
 }
 
-.nav-logo {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #333;
-  text-decoration: none;
-}
-
-/* ---------------- Right Alignment ---------------- */
-.nav-right {
+/* Desktop menu */
+.nav-links.desktop {
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin-left: auto;
-  gap: 1.2rem;
+  gap: 20px;
 }
 
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  margin-left: auto;
-}
-
-.nav-link {
+.nav-links.desktop .nav-link {
   text-decoration: none;
-  color: #333;
+  color: black;
   font-weight: 500;
-  position: relative;
-  transition: color 0.2s;
 }
 
-.nav-link:hover {
-  color: #007bff;
-}
-
-.nav-link::after {
-  content: "";
-  position: absolute;
-  left: 100%;
-  bottom: -3px;
-  width: 0;
-  height: 2px;
-  background-color: #007bff;
-  transition: all 0.3s ease;
-}
-
-.nav-link:hover::after {
-  left: 0;
-  width: 100%;
-}
-
-/* ---------------- Logout Button ---------------- */
-.logout-btn {
-  padding: 0.35rem 0.8rem;
-  background: #ff4747;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.logout-btn:hover {
-  transform: translateY(1px);
-  box-shadow: 0 0 5px #ff4747;
-}
-
-/* ---------------- Dark Mode Toggle ---------------- */
-.dark-toggle {
-  cursor: pointer;
-  font-size: 1.2rem;
-  transition: transform 0.4s;
-}
-
-.dark-toggle.rotate {
-  transform: rotate(360deg);
-}
-
-/* ---------------- Hamburger ---------------- */
+/* Hamburger */
 .hamburger {
   display: none;
   flex-direction: column;
-  gap: 5px;
   cursor: pointer;
-  width: 28px;
-  height: 20px;
-  justify-content: center;
+  gap: 5px;
 }
 
 .hamburger span {
-  width: 100%;
+  width: 25px;
   height: 3px;
-  background-color: #333;
-  border-radius: 2px;
-  transition: all 0.3s ease;
+  background: black;
+  transition: 0.4s;
 }
 
-/* Active hamburger = X */
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translateY(8px);
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
 }
-
-.hamburger.active span:nth-child(2) {
+.hamburger.open span:nth-child(2) {
   opacity: 0;
 }
-
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translateY(-8px);
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* ---------------- Global Dark Mode ---------------- */
-body.dark {
-  background-color: #121212;
-  color: #f5f5f5;
+/* Mobile dropdown */
+.mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  background: white;
+  transition: max-height 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
 }
 
-body.dark .navbar {
-  background-color: #1e1e1e;
-  border-color: #333;
+.mobile-menu.active {
+  max-height: 300px; /* enough to show links */
+  padding: 10px 20px;
 }
 
-body.dark .nav-logo,
-body.dark .nav-link,
-body.dark .dark-toggle {
-  color: #f5f5f5;
+.mobile-menu .nav-link,
+.mobile-menu .logout-btn,
+.mobile-menu .username {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
 }
 
-body.dark .nav-link:hover::after {
-  background-color: #4dabf7;
-}
-
-/* ---------------- Mobile ---------------- */
+/* Responsive */
 @media (max-width: 768px) {
-  .nav-links {
-    flex-direction: column;
-    width: 100%;
-    background: white;
-    position: relative; /* ✅ Fix: now pushes content */
+  .nav-links.desktop {
     display: none;
-    padding: 1rem;
-    border-bottom: 1px solid #ddd;
-    transition: max-height 0.4s ease;
-    overflow: hidden;
   }
-
-  .nav-links.open {
-    display: flex;
-    animation: slideDownMenu 0.4s ease forwards;
-  }
-
   .hamburger {
     display: flex;
   }
-}
-
-/* ---------------- Animations ---------------- */
-@keyframes slideDownMenu {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideDownNavbar {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ---------------- Body Global Transition ---------------- */
-body {
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
