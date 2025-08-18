@@ -27,53 +27,54 @@
 }
 
 /* Hamburger */
+/* Hamburger button */
 .hamburger {
-  display: none;
+  width: 30px;
+  height: 22px;
+  display: flex;
   flex-direction: column;
+  justify-content: space-between;
   cursor: pointer;
-  gap: 5px;
 }
 
 .hamburger span {
-  width: 25px;
   height: 3px;
-  background: black;
-  transition: 0.4s;
+  width: 100%;
+  background: white;
+  border-radius: 2px;
+  transition: 0.3s ease;
 }
 
+/* Animation to X */
 .hamburger.open span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
+
 .hamburger.open span:nth-child(2) {
   opacity: 0;
 }
+
 .hamburger.open span:nth-child(3) {
   transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Mobile dropdown */
-.mobile-menu {
-  max-height: 0;
-  overflow: hidden;
-  background: white;
-  transition: max-height 0.4s ease;
-  display: flex;
+/* Menu hidden by default */
+.menu {
+  display: none;
   flex-direction: column;
-  padding: 0 20px;
+  background: white;
+  padding: 15px 20px;
 }
 
-.mobile-menu.active {
-  max-height: 300px; /* enough to show links */
-  padding: 10px 20px;
+/* Menu show when open */
+.menu.show {
+  display: flex;
 }
 
-.mobile-menu .nav-link,
-.mobile-menu .logout-btn,
-.mobile-menu .username {
+.menu a {
   padding: 10px 0;
-  border-bottom: 1px solid #eee;
   text-decoration: none;
-  color: black;
+  color: #0d47a1;
   font-weight: 500;
 }
 
