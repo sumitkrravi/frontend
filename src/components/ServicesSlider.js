@@ -22,7 +22,7 @@ const PrevArrow = ({ onClick }) => (
 export default function ServicesSlider() {
   const settings = {
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: 3,   // desktop - 3 cards
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -30,8 +30,8 @@ export default function ServicesSlider() {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
-      { breakpoint: 992, settings: { slidesToShow: 2 } },
-      { breakpoint: 768, settings: { slidesToShow: 1 } },
+      { breakpoint: 992, settings: { slidesToShow: 2 } }, // tablet - 2 cards
+      { breakpoint: 768, settings: { slidesToShow: 1 } }, // mobile - 1 card
     ],
   };
 
@@ -72,4 +72,4 @@ export default function ServicesSlider() {
       </div>
     </section>
   );
-}
+  }
