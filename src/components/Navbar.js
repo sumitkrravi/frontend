@@ -1,4 +1,3 @@
-// src/components/Navbar.js
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
@@ -23,7 +22,6 @@ export default function Navbar() {
     setDarkMode(!darkMode);
   };
 
-  // Add or remove body dark class
   useEffect(() => {
     if (darkMode) {
       document.body.classList.add("dark");
@@ -33,31 +31,29 @@ export default function Navbar() {
   }, [darkMode]);
 
   return (
-    <nav className="navbar slide-down">
+    <nav className="navbar">
       <div className="nav-container">
         <Link to="/" className="nav-logo">e-Cyber Café</Link>
 
-        {/* all right side */}
         <div className="nav-right">
-
-          {/* Menu links */}
-          <div className={`nav-links ${menuOpen ? "open" : ""}`}>
+          {/* Desktop links */}
+          <div className="nav-links desktop">
             {!user ? (
               <>
-                <Link to="/" className="nav-link" onClick={() => setMenuOpen(false)}>Home</Link>
-                <Link to="/login" className="nav-link" onClick={() => setMenuOpen(false)}>Login</Link>
-                <Link to="/signup" className="nav-link" onClick={() => setMenuOpen(false)}>Signup</Link>
+                <Link to="/" className="nav-link">Home</Link>
+                <Link to="/login" className="nav-link">Login</Link>
+                <Link to="/signup" className="nav-link">Signup</Link>
               </>
             ) : (
               <>
-                <Link to="/dashboard" className="nav-link" onClick={() => setMenuOpen(false)}>Dashboard</Link>
+                <Link to="/dashboard" className="nav-link">Dashboard</Link>
                 <span className="nav-link username">Welcome, {user.name.split(" ")[0]}</span>
                 <button className="logout-btn" onClick={handleLogout}>Logout</button>
               </>
             )}
           </div>
 
-          {/* Dark mode emoji toggle */}
+          {/* Dark mode */}
           <div
             className={`dark-toggle ${darkMode ? "rotate" : ""}`}
             onClick={toggleDarkMode}
@@ -65,12 +61,29 @@ export default function Navbar() {
             {darkMode ? "🌞" : "🌙"}
           </div>
 
-          {/* Hamburger for mobile */}
-          <div className={`hamburger ${menuOpen ? "active" : ""}`} onClick={toggleMenu}>
+          {/* Hamburger */}
+          <div className={`hamburger ${menuOpen ? "open" : ""}`} onClick={toggleMenu}>
             <span></span><span></span><span></span>
           </div>
         </div>
       </div>
+
+      {/* Mobile dropdown (nav ke andar white expand) */}
+      <div className={`mobile-menu ${menuOpen ? "active" : ""}`}>
+        {!user ? (
+          <>
+            <Link to="/" className="nav-link" onClick={() => setMenuOpen(false)}>Home</Link>
+            <Link to="/login" className="nav-link" onClick={() => setMenuOpen(false)}>Login</Link>
+            <Link to="/signup" className="nav-link" onClick={() => setMenuOpen(false)}>Signup</Link>
+          </>
+        ) : (
+          <>
+            <Link to="/dashboard" className="nav-link" onClick={() => setMenuOpen(false)}>Dashboard</Link>
+            <span className="nav-link username">Welcome, {user.name.split(" ")[0]}</span>
+            <button className="logout-btn" onClick={handleLogout}>Logout</button>
+          </>
+        )}
+      </div>
     </nav>
   );
-    }
+              }
