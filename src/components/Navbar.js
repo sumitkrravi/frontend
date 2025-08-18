@@ -1,6 +1,7 @@
 // src/components/Navbar.js
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { FaHome, FaSignInAlt, FaUserPlus, FaTachometerAlt, FaSignOutAlt } from "react-icons/fa";
 import "./Navbar.css";
 
 export default function Navbar() {
@@ -41,25 +42,17 @@ export default function Navbar() {
 
         {/* Right side items */}
         <div className="nav-right">
-          {/* Desktop links */}
+          {/* Desktop links (without icons) */}
           <div className="nav-links desktop">
             {!user ? (
               <>
-                <Link to="/" className="nav-link">
-                  Home
-                </Link>
-                <Link to="/login" className="nav-link">
-                  Login
-                </Link>
-                <Link to="/signup" className="nav-link">
-                  Signup
-                </Link>
+                <Link to="/" className="nav-link">Home</Link>
+                <Link to="/login" className="nav-link">Login</Link>
+                <Link to="/signup" className="nav-link">Signup</Link>
               </>
             ) : (
               <>
-                <Link to="/dashboard" className="nav-link">
-                  Dashboard
-                </Link>
+                <Link to="/dashboard" className="nav-link">Dashboard</Link>
                 <span className="nav-link username">
                   Welcome, {user.name.split(" ")[0]}
                 </span>
@@ -90,46 +83,34 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile dropdown menu */}
+      {/* Mobile dropdown menu (with icons) */}
       <div className={`mobile-menu ${menuOpen ? "active" : ""}`}>
         {!user ? (
           <>
             <Link to="/" className="nav-link" onClick={() => setMenuOpen(false)}>
-              Home
+              <FaHome style={{ marginRight: "8px" }} /> Home
             </Link>
-            <Link
-              to="/login"
-              className="nav-link"
-              onClick={() => setMenuOpen(false)}
-            >
-              Login
+            <Link to="/login" className="nav-link" onClick={() => setMenuOpen(false)}>
+              <FaSignInAlt style={{ marginRight: "8px" }} /> Login
             </Link>
-            <Link
-              to="/signup"
-              className="nav-link"
-              onClick={() => setMenuOpen(false)}
-            >
-              Signup
+            <Link to="/signup" className="nav-link" onClick={() => setMenuOpen(false)}>
+              <FaUserPlus style={{ marginRight: "8px" }} /> Signup
             </Link>
           </>
         ) : (
           <>
-            <Link
-              to="/dashboard"
-              className="nav-link"
-              onClick={() => setMenuOpen(false)}
-            >
-              Dashboard
+            <Link to="/dashboard" className="nav-link" onClick={() => setMenuOpen(false)}>
+              <FaTachometerAlt style={{ marginRight: "8px" }} /> Dashboard
             </Link>
             <span className="nav-link username">
               Welcome, {user.name.split(" ")[0]}
             </span>
             <button className="logout-btn" onClick={handleLogout}>
-              Logout
+              <FaSignOutAlt style={{ marginRight: "8px" }} /> Logout
             </button>
           </>
         )}
       </div>
     </nav>
   );
-    }
+}
