@@ -40,6 +40,45 @@ export default function Navbar() {
         {/* all right side */}
         <div className="nav-right">
 
+          {/* Menu links */}
+          <div className={`nav-links ${menuOpen ? "open" : ""}`}>
+            {!user ? (
+              <>
+                <Link to="/" className="nav-link" onClick={() => setMenuOpen(false)}>Home</Link>
+                <Link to="/login" className="nav-link" onClick={() => setMenuOpen(false)}>Login</Link>
+                <Link to="/signup" className="nav-link" onClick={() => setMenuOpen(false)}>Signup</Link>
+              </>
+            ) : (
+              <>
+                <Link to="/dashboard" className="nav-link" onClick={() => setMenuOpen(false)}>Dashboard</Link>
+                <span className="nav-link username">Welcome, {user.name.split(" ")[0]}</span>
+                <button className="logout-btn" onClick={handleLogout}>Logout</button>
+              </>
+            )}
+          </div>
+
+          {/* Dark mode emoji toggle */}
+          <div
+            className={`dark-toggle ${darkMode ? "rotate" : ""}`}
+            onClick={toggleDarkMode}
+          >
+            {darkMode ? "🌞" : "🌙"}
+          </div>
+
+          {/* Hamburger for mobile */}
+          <div className={`hamburger ${menuOpen ? "active" : ""}`} onClick={toggleMenu}>
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+}      <div className="nav-container">
+        <Link to="/" className="nav-logo">e-Cyber Café</Link>
+
+        {/* all right side */}
+        <div className="nav-right">
+
           <div className={`nav-links ${menuOpen ? "open" : ""}`}>
             {!user ? (
               <>
