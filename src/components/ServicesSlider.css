@@ -13,28 +13,52 @@
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: all 0.3s ease-in-out;
-  height: 200px;
+  height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-.card h3 {
-  font-size: 1.3rem;
+.card-logo img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.card h4 {
+  font-size: 1.2rem;
   color: #2c3e50;
   margin-bottom: 10px;
   font-weight: 600;
 }
 
 .card p {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #555;
   line-height: 1.4;
+  white-space: pre-line; /* \n ko 2-line me dikhane ke liye */
+}
+
+/* Dark Mode Support */
+.dark .card {
+  background: #1f2937; /* gray-800 */
+  color: #f3f4f6; /* gray-100 */
+  box-shadow: 0 6px 15px rgba(255, 255, 255, 0.1);
+}
+
+.dark .card h4 {
+  color: #e5e7eb; /* gray-200 */
+}
+
+.dark .card p {
+  color: #d1d5db; /* gray-300 */
 }
 
 /* Dots Styling */
@@ -51,4 +75,42 @@
 .slick-dots li.slick-active button:before {
   color: #007bff;
   opacity: 1;
+}
+
+.dark .slick-dots li button:before {
+  color: #bbb;
+}
+
+.dark .slick-dots li.slick-active button:before {
+  color: #60a5fa; /* blue-400 */
+}
+
+/* Arrows Styling */
+.slick-prev:before,
+.slick-next:before {
+  font-size: 25px;
+  color: #000; /* Light mode black */
+}
+
+.dark .slick-prev:before,
+.dark .slick-next:before {
+  color: #fff; /* Dark mode white */
+}
+
+/* Mobile tweaks */
+@media (max-width: 768px) {
+  .card {
+    height: auto;
+    padding: 20px;
+  }
+  .card-logo img {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* Hide arrows on mobile */
+  .slick-prev,
+  .slick-next {
+    display: none !important;
+  }
 }
