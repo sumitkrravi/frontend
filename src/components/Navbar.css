@@ -1,13 +1,13 @@
 /* ---------------- Base Navbar ---------------- */
 .navbar {
   width: 100%;
-  /* background-color: #ffffff; */
   border-bottom: 1px solid #ddd;
   position: sticky;
   top: 0;
   z-index: 1000;
   transition: background-color 0.3s ease;
   animation: slideDownNavbar 0.5s ease;
+  background-color: #fff;
 }
 
 .nav-container {
@@ -30,7 +30,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin-left: auto;  /* pushes all right */
+  margin-left: auto;
   gap: 1.2rem;
 }
 
@@ -38,7 +38,7 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  margin-left: auto; /* ensures links stay right */
+  margin-left: auto;
 }
 
 .nav-link {
@@ -100,15 +100,49 @@
 .hamburger {
   display: none;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
   cursor: pointer;
+  z-index: 1100;
 }
 
 .hamburger span {
-  width: 25px;
+  width: 26px;
   height: 3px;
   background-color: #333;
-  transition: 0.3s;
+  border-radius: 2px;
+  transition: 0.4s;
+}
+
+/* Hamburger animation when open */
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ---------------- Mobile Menu ---------------- */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  width: 100%;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+  animation: slideDownMenu 0.4s ease forwards;
+}
+
+.mobile-menu.active {
+  display: flex;
+}
+
+.mobile-menu .nav-link {
+  padding: 0.6rem 0;
+  font-size: 1.1rem;
+  color: #333;
 }
 
 /* ---------------- Global Dark Mode ---------------- */
@@ -132,23 +166,15 @@ body.dark .nav-link:hover::after {
   background-color: #4dabf7;
 }
 
+body.dark .mobile-menu {
+  background-color: #1e1e1e;
+  border-color: #333;
+}
+
 /* ---------------- Mobile ---------------- */
 @media (max-width: 768px) {
-  .nav-links {
+  .nav-links.desktop {
     display: none;
-    flex-direction: column;
-    width: 100%;
-    background: inherit;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    padding: 1rem;
-    animation: slideDownMenu 0.4s ease forwards;
-    border-bottom: 1px solid #ddd;
-  }
-
-  .nav-links.open {
-    display: flex;
   }
 
   .hamburger {
@@ -158,13 +184,25 @@ body.dark .nav-link:hover::after {
 
 /* ---------------- Animations ---------------- */
 @keyframes slideDownMenu {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideDownNavbar {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ---------------- Body Global Transition ---------------- */
