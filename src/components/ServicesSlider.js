@@ -2,88 +2,77 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./ServicesSlider.css";
+import { services } from "../data/ServicesData";
+// import {FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
-const services = [
-  {
-    logo: "https://res.cloudinary.com/dnnokrofc/image/upload/v1755598631/hdzvz5gy7rssm5jgam3f.jpg",
-    title: "Document Services",
-    description: "Pan Card, Income Certificate\nCaste Certificate, Voter Card",
-  },
-  {
-    logo: "https://res.cloudinary.com/dnnokrofc/image/upload/v1755598379/wujewala89dmnrgjlihp.png",
-    title: "Financial Services",
-    description: "Bank Account, Loan Certificate\nTax Services, Insurance",
-  },
-  {
-    logo: "https://res.cloudinary.com/dnnokrofc/image/upload/v1755598379/wujewala89dmnrgjlihp.png",
-    title: "Property Services",
-    description: "Property Registration, Sale Deed\nMutation, Encumbrance Certificate",
-  },
-  {
-    logo: "https://res.cloudinary.com/dnnokrofc/image/upload/v1755598379/wujewala89dmnrgjlihp.png",
-    title: "Education Services",
-    description: "Marksheet, Transfer Certificate\nDegree Certificate, Migration",
-  },
-];
-
-const ServiceSlider = () => {
+const ServicesSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
     speed: 600,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
-    arrows: true, // 👈 default me arrows on rahenge
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 2000,
+    // nextArrow: <FaArrowLeft />,
+    // prevArrow: <FaArrowRight />,
     responsive: [
       {
-        breakpoint: 768, // mobile
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false, // 👈 mobile me arrows hide
-          dots: true,
-          centerMode: false,
-          centerPadding: "0px",
-        },
+        breakpoint: 1024,
+        settings: { slidesToShow: 3 },
+      },
+      {
+        breakpoint: 768,
+        settings: { slidesToShow: 2 },
+      },
+      {
+        breakpoint: 480,
+        settings: { slidesToShow: 1 },
       },
     ],
   };
 
   return (
-    <div className="slider-container dark:bg-black py-6">
-      <Slider {...settings}>
-        {services.map((service, index) => (
-          <div key={index}>
-            <div
-              className="
-                card 
-                bg-white dark:bg-gray-800 
-                text-gray-900 dark:text-gray-100 
-                rounded-2xl shadow-md dark:shadow-lg 
-                p-6 transition-all duration-300 
-                hover:shadow-2xl hover:scale-[1.02]
-              "
-            >
-              <div className="card-logo mb-4 flex justify-center">
-                <img
-                  src={service.logo}
+    <div className="p-4">
+      <h2 className="text-2xl font-bold handwriting text-center mb-6">
+        Latest Lunch Services     
+      </h2>
+
+      <div className="relative bg-red p-4 rounded-lg ">
+        <Slider {...settings}>
+          {services.map((service, index) => (
+            <div key={index} className="px-2">
+              <div className="bg-red rounded-xl p-4 text-center hover:shadow-lg transition">
+                <img className=""
+                  src={service.image}
                   alt={service.title}
-                  className="w-20 h-20 object-contain"
                 />
+                <h3 className="font-semibold">{service.title}</h3>
               </div>
-              <h4 className="text-lg font-semibold text-center">{service.title}</h4>
-              <p className="text-sm text-gray-600 dark:text-gray-300 whitespace-pre-line mt-2 text-center">
-                {service.description}
-              </p>
             </div>
-          </div>
-        ))}
-      </Slider>
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 };
 
-export default ServiceSlider;
+// const NextArrow = ({ onClick }) => (
+//   <div
+//     // className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 cursor-pointer bg-black text-white p-2 rounded-full"
+//     onClick={onClick}
+//   >
+//     <FaArrowRight />
+//   </div>
+// );
+
+// const PrevArrow = ({ onClick }) => (
+//   <div
+//     // className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 cursor-pointer bg-black text-white p-2 rounded-full"
+//     onClick={onClick}
+//   >
+//     <FaArrowLeft />
+//   </div>
+// );
+
+export default ServicesSlider;
