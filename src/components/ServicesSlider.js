@@ -1,78 +1,75 @@
-import React from "react";
-import Slider from "react-slick";
+// src/components/ServicesSlider.js
+import React from 'react';
+import Slider from 'react-slick';
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { services } from "../data/ServicesData";
-// import {FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import './ServicesSlider.css'; // CSS for cards and arrows
 
-const ServicesSlider = () => {
+// Custom Arrow Components with size and styling
+const NextArrow = ({ onClick }) => (
+  <div className="custom-arrow next" onClick={onClick}>
+    <FaArrowRight size={20} />
+  </div>
+);
+
+const PrevArrow = ({ onClick }) => (
+  <div className="custom-arrow prev" onClick={onClick}>
+    <FaArrowLeft size={20} />
+  </div>
+);
+
+export default function ServicesSlider() {
   const settings = {
-    dots: true,
     infinite: true,
-    speed: 600,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
-    // nextArrow: <FaArrowLeft />,
-    // prevArrow: <FaArrowRight />,
+    autoplaySpeed: 3000,
+    arrows: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
     responsive: [
-      {
-        breakpoint: 1024,
-        settings: { slidesToShow: 3 },
-      },
-      {
-        breakpoint: 768,
-        settings: { slidesToShow: 2 },
-      },
-      {
-        breakpoint: 480,
-        settings: { slidesToShow: 1 },
-      },
+      { breakpoint: 992, settings: { slidesToShow: 2 } },
+      { breakpoint: 768, settings: { slidesToShow: 1 } },
     ],
   };
 
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold handwriting text-center mb-6">
-        Latest Lunch Services     
-      </h2>
-
-      <div className="relative bg-red p-4 rounded-lg ">
+    <section className="py-5 bg-light">
+      <div className="container position-relative">
+        <h2 className="text-center mb-4">Our Services</h2>
         <Slider {...settings}>
-          {services.map((service, index) => (
-            <div key={index} className="px-2">
-              <div className="bg-red rounded-xl p-4 text-center hover:shadow-lg transition">
-                <img className=""
-                  src={service.image}
-                  alt={service.title}
-                />
-                <h3 className="font-semibold">{service.title}</h3>
-              </div>
+          <div>
+            <div className="service-card text-center">
+              <i className="bi bi-globe2 fs-1 text-primary mb-3"></i>
+              <h5>Online Form Filling</h5>
+              <p>Apply for government services, exams, and more — fast and hassle-free.</p>
             </div>
-          ))}
+          </div>
+          <div>
+            <div className="service-card text-center">
+              <i className="bi bi-printer fs-1 text-primary mb-3"></i>
+              <h5>Printing & Scanning</h5>
+              <p>High-quality printing, photocopying, and document scanning services.</p>
+            </div>
+          </div>
+          <div>
+            <div className="service-card text-center">
+              <i className="bi bi-person-check-fill fs-1 text-primary mb-3"></i>
+              <h5>Customer Support</h5>
+              <p>Friendly support to help you every step of the way in your application journey.</p>
+            </div>
+          </div>
+          <div>
+            <div className="service-card text-center">
+              <i className="bi bi-laptop fs-1 text-primary mb-3"></i>
+              <h5>Computer Access</h5>
+              <p>Use computers with internet access for official work and browsing.</p>
+            </div>
+          </div>
         </Slider>
       </div>
-    </div>
+    </section>
   );
-};
-
-// const NextArrow = ({ onClick }) => (
-//   <div
-//     // className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 cursor-pointer bg-black text-white p-2 rounded-full"
-//     onClick={onClick}
-//   >
-//     <FaArrowRight />
-//   </div>
-// );
-
-// const PrevArrow = ({ onClick }) => (
-//   <div
-//     // className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 cursor-pointer bg-black text-white p-2 rounded-full"
-//     onClick={onClick}
-//   >
-//     <FaArrowLeft />
-//   </div>
-// );
-
-export default ServicesSlider;
+            }
