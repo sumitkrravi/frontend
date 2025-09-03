@@ -22,10 +22,11 @@ export default function Login() {
       toast.success(res.data.message || "Login successful", { theme: "colored" });
 
       if (res.data.user.role === "admin") {
-        navigate("/Admin-dashboard");
+      navigate("/admin-dashboard");  // 👈 lowercase
       } else {
-        navigate("/dashboard");
+      navigate("/dashboard");
       }
+
     } catch (error) {
       toast.error(error.response?.data?.message || "Something went wrong", { theme: "colored" });
     }
