@@ -1,8 +1,7 @@
-// src/pages/Signup.js
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { toast } from "react-toastify"; // ✅ Toast import
+import { toast } from "react-toastify";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -15,20 +14,16 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/signup", formData);
+      const res = await axios.post("https://e-backend-bwha.onrender.com/api/auth/signup", formData); // Corrected URL with /api/auth
 
-      // ✅ Success Toast
       toast.success(res.data.message || "Signup successful!", {
         position: "top-right",
         autoClose: 3000,
       });
 
-      // ✅ Redirect after delay so toast is visible
       setTimeout(() => navigate("/login"), 1000);
-
     } catch (error) {
       console.error("Signup error:", error);
-      // ✅ Error Toast
       toast.error(error.response?.data?.message || "Something went wrong", {
         position: "top-right",
         autoClose: 3000,
@@ -40,7 +35,6 @@ export default function Signup() {
     <div className="min-vh-100 d-flex align-items-center justify-content-center bg-light px-3">
       <div className="card shadow p-4 w-100" style={{ maxWidth: "450px" }}>
         <h2 className="text-center text-primary mb-4">Create Account</h2>
-
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label className="form-label">Full Name</label>
@@ -54,7 +48,6 @@ export default function Signup() {
               value={formData.name}
             />
           </div>
-
           <div className="mb-3">
             <label className="form-label">Email address</label>
             <input
@@ -67,7 +60,6 @@ export default function Signup() {
               value={formData.email}
             />
           </div>
-
           <div className="mb-3">
             <label className="form-label">Password</label>
             <input
@@ -80,14 +72,12 @@ export default function Signup() {
               value={formData.password}
             />
           </div>
-
           <div className="d-grid mb-3">
             <button type="submit" className="btn btn-primary">
               Sign Up
             </button>
           </div>
         </form>
-
         <div className="text-center">
           <small>
             Already have an account?{" "}

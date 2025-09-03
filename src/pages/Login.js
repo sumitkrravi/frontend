@@ -1,8 +1,7 @@
-// src/pages/Login.js
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { toast } from "react-toastify"; // ✅ Toast import
+import { toast } from "react-toastify";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -15,7 +14,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", formData);
+      const res = await axios.post("https://e-backend-bwha.onrender.com/api/auth/login", formData);
 
       localStorage.setItem("user", JSON.stringify(res.data.user));
       localStorage.setItem("token", res.data.token);
@@ -36,7 +35,6 @@ export default function Login() {
     <div className="min-vh-100 d-flex align-items-center justify-content-center bg-light px-3">
       <div className="card shadow p-4 w-100" style={{ maxWidth: "450px" }}>
         <h2 className="text-center text-primary mb-4">Login</h2>
-
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label className="form-label">Email address</label>
@@ -50,7 +48,6 @@ export default function Login() {
               value={formData.email}
             />
           </div>
-
           <div className="mb-3">
             <label className="form-label">Password</label>
             <input
@@ -63,21 +60,19 @@ export default function Login() {
               value={formData.password}
             />
           </div>
-
           <div className="d-grid mb-3">
             <button type="submit" className="btn btn-primary">
               Login
             </button>
           </div>
-
           <div className="text-center">
-          <small>
-            Create an account?{" "}
-            <Link to="/signup" className="text-decoration-none">
-              Signup here
-            </Link>
-          </small>
-        </div>
+            <small>
+              Create an account?{" "}
+              <Link to="/signup" className="text-decoration-none">
+                Signup here
+              </Link>
+            </small>
+          </div>
         </form>
       </div>
     </div>
