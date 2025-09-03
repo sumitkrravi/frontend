@@ -47,8 +47,9 @@ export default function Navbar() {
             {!user ? (
               <>
                 <Link to="/" className="nav-link">Home</Link>
+                <Link to="/Service" className="nav-link">Services</Link>
                 <Link to="/login" className="nav-link">Login</Link>
-                <Link to="/signup" className="nav-link">Signup</Link>
+                {/* <Link to="/signup" className="nav-link">Signup</Link> */}
               </>
             ) : (
               <>
