@@ -1,6 +1,6 @@
 {
   "short_name": "e Cyber Cafe",
-  "name": "e Cyber Cafe 2025",
+  "name": "e Cyber Cafe",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,13 +8,13 @@
       "type": "image/x-icon"
     },
     {
-      "src": "https://res.cloudinary.com/dncdnjsw9/image/upload/v1757013548/logo_wraqgf.svg",
-      "type": "image/svg",
+      "src": "logo192.png",
+      "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "https://res.cloudinary.com/dncdnjsw9/image/upload/v1757013548/logo_wraqgf.svg",
-      "type": "image/svg",
+      "src": "logo512.png",
+      "type": "image/png",
       "sizes": "512x512"
     }
   ],
