@@ -1,117 +1,99 @@
 .custom-footer {
-  background-color: #1a1a1a;
-  color: #fff;
-  padding: 30px 15px 10px;
-  font-family: 'Segoe UI', sans-serif;
+background-color: #1a1a1a;
+color: #fff;
+padding: 30px 10px 5px;
+font-family: 'Segoe UI', sans-serif;
 }
 
 .footer-content {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  max-width: 1200px;
-  margin: auto;
-  padding-bottom: 30px;
-  align-items: start;
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+max-width: 1200px;
+margin: auto;
+padding-bottom: 30px;
+gap: 40px;
 }
 
 .footer-column {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  text-align: left;
+flex: 1;
+min-width: 220px;
 }
 
 .footer-title {
-  font-size: 1.6rem;
-  color: #00bfff;
-  margin-bottom: 10px;
+font-size: 1.8rem;
+color: #00bfff;
+margin-bottom: 10px;
 }
 
 .footer-description {
-  font-size: 1rem;
-  color: #ccc;
-  margin-bottom: 14px;
-}
-
-.footer-social {
-  display: flex;
-  gap: 12px;
+font-size: 1rem;
+color: #ccc;
+margin-bottom: 14px;
 }
 
 .footer-social a {
-  color: #ccc;
-  font-size: 1.2rem;
-  transition: color 0.3s ease;
+color: #ccc;
+font-size: 1.2rem;
+margin-right: 12px;
+transition: color 0.3s ease;
 }
 
 .footer-social a:hover {
-  color: #00bfff;
+color: #00bfff;
 }
 
 .footer-column h3 {
-  font-size: 1.1rem;
-  color: #f0f0f0;
-  margin-bottom: 8px;
+font-size: 1.2rem;
+color: #f0f0f0;
+margin-bottom: 12px;
 }
 
 .footer-column ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+list-style: none;
+padding: 0;
 }
 
 .footer-column ul li {
-  margin-bottom: 8px;
+margin-bottom: 10px;
 }
 
 .footer-column ul li a {
-  color: #ccc;
-  text-decoration: none;
-  transition: color 0.3s ease;
+color: #ccc;
+text-decoration: none;
+transition: color 0.3s ease;
 }
 
 .footer-column ul li a:hover {
-  color: #00bfff;
+color: #00bfff;
 }
 
 .footer-bottom {
-  text-align: center;
-  border-top: 1px solid #444;
-  padding-top: 15px;
-  font-size: 0.9rem;
-  color: #aaa;
+text-align:center;
+border-top: 1px solid #444;
+padding-top: 15px;
+font-size: 0.9rem;
+color: #aaa;
 }
 
-/* 📱 Mobile Responsive */
+.footer-column-contact {
+flex: 1;
+min-width: 220px;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .footer-content {
-    grid-template-columns: repeat(3, 1fr); /* Sirf 3 column dikhaye */
-    gap: 15px;
-  }
-
-  .footer-title {
-    font-size: 1.2rem;
-  }
-
-  .footer-column h3 {
-    font-size: 0.95rem;
-  }
-
-  .footer-description,
-  .footer-column ul li a,
-  .footer-bottom {
-    font-size: 0.85rem;
-  }
-
-  .footer-social a {
-    font-size: 1rem;
-  }
-
-  /* ✅ Contact Info ko alag full-width row banado */
-  .footer-column:last-child {
-    grid-column: 1 / -1;  /* pura width le lega */
-    text-align: center;
-    align-items: center;
-  }
+.footer-content {
+flex-direction: column;
+text-align: center;
 }
+
+.footer-column {
+margin-bottom: 20px;
+}
+
+.footer-social {
+justify-content: center;
+}
+}
+
