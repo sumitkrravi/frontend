@@ -37,7 +37,11 @@ export default function Navbar() {
     <nav className="navbar slide-down">
       <div className="nav-container">
         <Link to="/" className="nav-logo">
-          e-Cyber Café
+          <img
+            src="https://res.cloudinary.com/dncdnjsw9/image/upload/v1757011136/Header-logo_uf8eiy.png"
+            alt="e Cyber Cafe"
+            style={{ height: "50px", width: "130px" }}
+          />
         </Link>
 
         {/* Right side items */}

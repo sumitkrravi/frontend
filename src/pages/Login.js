@@ -14,7 +14,10 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://e-backend-bwha.onrender.com/api/auth/login", formData);
+      const res = await axios.post("https://e-backend-bwha.onrender.com/api/auth/login", formData); // Corrected URL with /api/auth
+
+      // http://localhost:5000/api/auth/login for local
+      // https://e-backend-bwha.onrender.com/api/auth/login for Online
 
       localStorage.setItem("user", JSON.stringify(res.data.user));
       localStorage.setItem("token", res.data.token);

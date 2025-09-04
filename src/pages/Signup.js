@@ -16,6 +16,9 @@ export default function Signup() {
     try {
       const res = await axios.post("https://e-backend-bwha.onrender.com/api/auth/signup", formData); // Corrected URL with /api/auth
 
+      // http://localhost:5000/api/auth/signup for local
+      //https://e-backend-bwha.onrender.com/api/auth/signup for Online
+
       toast.success(res.data.message || "Signup successful!", {
         position: "top-right",
         autoClose: 3000,
