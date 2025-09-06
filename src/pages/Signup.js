@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import "../Loader.css"; // 👈 same loader css use hoga
 
 export default function Signup() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ name: "", email: "", password: "" });
+  const [loading, setLoading] = useState(false); // 👈 loader state
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -13,11 +15,15 @@ export default function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // 👈 loader on
     try {
-      const res = await axios.post("https://e-backend-bwha.onrender.com/api/auth/signup", formData); // Corrected URL with /api/auth
+      const res = await axios.post(
+        "https://e-backend-bwha.onrender.com/api/auth/signup",
+        formData
+      );
 
       // http://localhost:5000/api/auth/signup for local
-      //https://e-backend-bwha.onrender.com/api/auth/signup for Online
+      // https://e-backend-bwha.onrender.com/api/auth/signup for Online
 
       toast.success(res.data.message || "Signup successful!", {
         position: "top-right",
@@ -31,11 +37,23 @@ export default function Signup() {
         position: "top-right",
         autoClose: 3000,
       });
+    } finally {
+      setLoading(false); // 👈 loader off
     }
   };
 
   return (
-    <div className="min-vh-100 d-flex align-items-center justify-content-center bg-light px-3">
+    <div className="min-vh-200 d-flex align-items-center justify-content-center bg-light px-3">
+      {/* 👇 Loader Overlay */}
+      {loading && (
+        <div className="loader-overlay">
+          <div className="text-center">
+            <img src="/loader.svg" alt="Loading..." />
+            <p>Creating your account...</p>
+          </div>
+        </div>
+      )}
+
       <div className="card shadow p-4 w-100" style={{ maxWidth: "450px" }}>
         <h2 className="text-center text-primary mb-4">Create Account</h2>
         <form onSubmit={handleSubmit}>
@@ -76,8 +94,12 @@ export default function Signup() {
             />
           </div>
           <div className="d-grid mb-3">
-            <button type="submit" className="btn btn-primary">
-              Sign Up
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={loading} // 👈 disable button while loading
+            >
+              {loading ? "Signing Up..." : "Sign Up"}
             </button>
           </div>
         </form>
