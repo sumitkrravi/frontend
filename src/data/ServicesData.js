@@ -1,24 +1,11 @@
-// src/data/servicesData.js
-
-export const services = [
-  {
-    title: "New Voter ID",
-    image: "https://res.cloudinary.com/dnnokrofc/image/upload/v1755598379/wujewala89dmnrgjlihp.png",
-  },
-  {
-    title: "Ration Card",
-    image: "https://res.cloudinary.com/dnnokrofc/image/upload/v1755598379/wujewala89dmnrgjlihp.png",
-  },
-  {
-    title: "Passport Apply",
-    image: "https://res.cloudinary.com/dnnokrofc/image/upload/v1755598379/wujewala89dmnrgjlihp.png",
-  },
-  {
-    title: "Income Certificate",
-    image: "https://res.cloudinary.com/dnnokrofc/image/upload/v1755598379/wujewala89dmnrgjlihp.png",
-  },
-  {
-    title: "Driving License",
-    image: "https://res.cloudinary.com/dnnokrofc/image/upload/v1755598379/wujewala89dmnrgjlihp.png",
-  },
+// src/data/ServiceData.js
+const services = [
+  { id: 1, name: "Driving License", price: "₹500", img: "https://via.placeholder.com/300x200" },
+  { id: 2, name: "PAN Card", price: "₹300", img: "https://via.placeholder.com/300x200" },
+  { id: 3, name: "Aadhar Update", price: "₹200", img: "https://via.placeholder.com/300x200" },
+  { id: 4, name: "Voter ID", price: "₹150", img: "https://via.placeholder.com/300x200" },
+  { id: 5, name: "Income Certificate", price: "₹250", img: "https://via.placeholder.com/300x200" },
+  { id: 6, name: "Caste Certificate", price: "₹250", img: "https://via.placeholder.com/300x200" },
 ];
+
+export default services;
