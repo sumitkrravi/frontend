@@ -55,6 +55,20 @@ export default function Dashboard() {
       downloadLink: null,
       submittedDate: "2025-07-03",
     },
+    {
+      id: 1,
+      formName: "SSC CHSL 2025",
+      status: "Completed",
+      downloadLink: "#",
+      submittedDate: "2025-07-01",
+    },
+    {
+      id: 2,
+      formName: "Railway Group D",
+      status: "Under Process",
+      downloadLink: null,
+      submittedDate: "2025-07-03",
+    },
   ];
 
   const services = [
@@ -133,7 +147,7 @@ export default function Dashboard() {
           <h2 className="text-center text-primary mb-4">Apply Services :</h2>
           <Form.Control
             type="text"
-            placeholder="Search Service"
+            placeholder="Search Service 🔍︎"
             className="me-2 w-auto text-center text-primary mb-4"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -170,14 +184,14 @@ export default function Dashboard() {
         <h2 className="text-center text-primary mb-4">Your Form Requests</h2>
 
         {formRequests.length === 0 ? (
-          <p className="text-center">No form requests found.</p>
+          <p className="text-center">No Service Request found.</p>
         ) : (
-          <div className="table-responsive">
+          <div className="text-center table-responsive">
             <table className="table table-bordered table-hover align-middle">
               <thead className="table-primary">
                 <tr>
-                  <th>#</th>
-                  <th>Form Name</th>
+                  <th>S.N.</th>
+                  <th>Name</th>
                   <th>Status</th>
                   <th>Submitted</th>
                   <th>Download</th>
@@ -190,7 +204,7 @@ export default function Dashboard() {
                     <td>{request.formName}</td>
                     <td>
                       <span
-                        className={`badge bg-${request.status === "Completed" ? "success" : "warning"
+                        className={`badge bg-${request.status === "Completed" ? "success" : "warning" 
                           }`}
                       >
                         {request.status}
