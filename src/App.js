@@ -31,6 +31,8 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             {/* Other routes */}
             <Route path="/form-request" element={<FormRequest />} />
+            <Route path="*" element={<h2>Page Not Found</h2>} />
+
           </Routes>
         </div>
 
