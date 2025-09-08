@@ -1,6 +1,7 @@
 // src/components/ServiceRequestModal.js
 import React, { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 import "./Modal.css";
 
 export default function ServiceRequestModal({ service, onClose }) {
@@ -73,7 +74,10 @@ export default function ServiceRequestModal({ service, onClose }) {
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "multipart/form-data" },
       });
 
-      alert("✅ Request submitted successfully!");
+      toast.success("Request submitted successfully!", {
+        position: "top-right",
+        autoClose: 3000,
+      });
       setFormData({
         name: "",
         mobile: "",
@@ -84,7 +88,10 @@ export default function ServiceRequestModal({ service, onClose }) {
       onClose();
     } catch (error) {
       console.error(error);
-      alert("❌ Error submitting request");
+      toast.error(" Server Down!! Try After Sometime.", {
+        position: "top-right",
+        autoClose: 5000,
+      });
     } finally {
       setLoading(false);
     }
