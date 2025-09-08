@@ -5,7 +5,7 @@ import services from "../data/ServicesData";
 import Breadcrumbs from "../components/Breadcrumbs";
 import "../components/Breadcrumbs.css";
 
-export default function ServiceDetails() {
+export default function Service() {
     const [searchTerm, setSearchTerm] = React.useState("");
     const navigate = useNavigate();
 

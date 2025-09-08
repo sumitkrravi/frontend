@@ -1,0 +1,45 @@
+/* src/components/Modal.css */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+}
+
+.modal-content {
+  background: #fff;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 12px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-content {
+  width: 90%;        /* 90% of viewport for mobile */
+  max-width: 500px;  /* max for desktop */
+  margin: auto;
+}
+.modal-content {
+  padding: 1.5rem;   /* thoda space charo taraf */
+}
+.modal-overlay {
+  overflow-y: auto;   /* agar content height zyada ho to scroll aaye */
+  padding: 1rem;      /* top/bottom padding for mobile */
+}

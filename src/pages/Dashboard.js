@@ -4,35 +4,30 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify"; // ✅ Toast import
 import services from "../data/ServicesData"; // ✅ Import services data
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
-
+import ServiceRequestModal from "../components/ServiceRequestModal";
 
 export default function Dashboard() {
   const [user, setUser] = useState(null);
-  const navigate = useNavigate();
-
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedService, setSelectedService] = useState(null); // ✅ modal state inside component
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     } else {
-      // Redirect if not logged in
-      navigate("/login");
+      navigate("/login"); // redirect if not logged in
     }
   }, [navigate]);
 
   const handleLogout = () => {
-    // ✅ Clear all stored data
     localStorage.clear();
-
-    // ✅ Show toast notification
     toast.error("You have been logged out", {
       position: "top-right",
       autoClose: 2000,
     });
-
-    // ✅ Delay redirect so toast is visible
     setTimeout(() => {
       navigate("/login");
     }, 1000);
@@ -40,7 +35,7 @@ export default function Dashboard() {
 
   if (!user) return null;
 
-  // Dummy data — later backend se ayega
+  // Dummy form requests (later backend fetch)
   const formRequests = [
     {
       id: 1,
@@ -57,32 +52,34 @@ export default function Dashboard() {
       submittedDate: "2025-07-03",
     },
   ];
-  
-  // Filter services based on search term
 
-  const filteredServices = services.filter(service =>
+  const filteredServices = services.filter((service) =>
     service.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   // ✅ When user clicks on a service card
   const handleCardClick = (service) => {
-    navigate("/form-request", { state: { serviceName: service.name } });
+    setSelectedService(service); // modal ke liye service set karenge
   };
 
   return (
     <div className="container mt-5">
+      {/* User info card */}
       <div className="card shadow p-4">
         <div className="d-flex justify-content-between align-items-center mb-3">
           <h4 className="text-success mb-0">Welcome, {user.name} 🎉</h4>
           <div className="text-center mt-4">
-            <Button variant="danger" onClick={handleLogout}>Logout</Button>
+            <Button variant="danger" onClick={handleLogout}>
+              Logout
+            </Button>
           </div>
         </div>
-        <h5><strong>Email:</strong> {user.email}</h5>
+        <h5>
+          <strong>Email:</strong> {user.email}
+        </h5>
       </div>
 
-      
-      {/* servive cards  */}
+      {/* Services */}
       <Container className="py-4">
         <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
           <h2 className="text-center text-primary mb-4">Apply Services :</h2>
@@ -120,10 +117,9 @@ export default function Dashboard() {
         </Row>
       </Container>
 
-      {/* form status track table  */}
+      {/* Form Requests Table */}
       <div className="container my-5">
         <h2 className="text-center text-primary mb-4">Your Form Requests</h2>
-
         {formRequests.length === 0 ? (
           <p className="text-center">No Service Request found.</p>
         ) : (
@@ -145,8 +141,9 @@ export default function Dashboard() {
                     <td>{request.formName}</td>
                     <td>
                       <span
-                        className={`badge bg-${request.status === "Completed" ? "success" : "warning" 
-                          }`}
+                        className={`badge bg-${
+                          request.status === "Completed" ? "success" : "warning"
+                        }`}
                       >
                         {request.status}
                       </span>
@@ -169,7 +166,13 @@ export default function Dashboard() {
         )}
       </div>
 
+      {/* Service Request Modal */}
+      {selectedService && (
+        <ServiceRequestModal
+          service={selectedService}
+          onClose={() => setSelectedService(null)}
+        />
+      )}
     </div>
-
   );
 }
