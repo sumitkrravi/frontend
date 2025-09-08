@@ -33,7 +33,17 @@ export default function ServiceRequestModal({ service, onClose }) {
     let tempErrors = {};
     if (!formData.name.trim()) tempErrors.name = "Name is required";
     if (!formData.mobile.trim()) tempErrors.mobile = "Mobile number is required";
-    if (!formData.email.trim()) tempErrors.email = "Email is required";
+
+    if (!formData.email.trim()) {
+      tempErrors.email = "Email is required";
+    } else {
+      // Simple email regex check
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        tempErrors.email = "Enter a valid email address";
+      }
+    }
+
     return tempErrors;
   };
 
@@ -82,10 +92,8 @@ export default function ServiceRequestModal({ service, onClose }) {
 
   return (
     <div className="modal-overlay">
-      <div className="modal-content shadow p-4 rounded">
-        <h4 className="mb-3">
-          Apply for {service.name}
-        </h4>
+      <div className="modal-content shadow p-4 rounded bg-white">
+        <h4 className="mb-3">Apply for {service.name}</h4>
 
         <form onSubmit={handleSubmit} noValidate>
           {/* Name */}
@@ -95,6 +103,7 @@ export default function ServiceRequestModal({ service, onClose }) {
             </label>
             <input
               type="text"
+              placeholder="Enter your full name"
               className={`form-control ${errors.name ? "is-invalid" : ""}`}
               name="name"
               value={formData.name}
@@ -110,6 +119,7 @@ export default function ServiceRequestModal({ service, onClose }) {
             </label>
             <input
               type="number"
+              placeholder="Enter your mobile number"
               className={`form-control ${errors.mobile ? "is-invalid" : ""}`}
               name="mobile"
               value={formData.mobile}
@@ -125,6 +135,7 @@ export default function ServiceRequestModal({ service, onClose }) {
             </label>
             <input
               type="email"
+              placeholder="Enter your email address"
               className={`form-control ${errors.email ? "is-invalid" : ""}`}
               name="email"
               value={formData.email}
@@ -139,7 +150,7 @@ export default function ServiceRequestModal({ service, onClose }) {
             <textarea
               className="form-control"
               name="description"
-              placeholder="Optional"
+              placeholder="Write additional details (Optional)"
               value={formData.description}
               onChange={handleChange}
             />
@@ -169,7 +180,14 @@ export default function ServiceRequestModal({ service, onClose }) {
               className="btn btn-success"
               disabled={loading}
             >
-              {loading ? "Submitting..." : "Submit"}
+              {loading ? (
+                <>
+                  Submitting
+                  <span className="loader-circle"></span>
+                </>
+              ) : (
+                "Submit"
+              )}
             </button>
           </div>
         </form>
