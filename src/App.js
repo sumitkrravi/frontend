@@ -9,7 +9,7 @@ import FormRequest from "./pages/FormRequest";
 import Dashboard from "./pages/Dashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
-import Service from "./pages/service";
+import Service from "./pages/Service";
 
 // ✅ Toastify imports
 import { ToastContainer } from "react-toastify";
@@ -39,7 +39,7 @@ function App() {
 
               {/* Other routes */}
               <Route path="/form-request" element={<FormRequest />} />
-              <Route path="/service" element={<Service />} />
+              <Route path="/Service" element={<Service />} />
 
               {/* Wrong route ke liye */}
               <Route path="*" element={<NotFound />} />

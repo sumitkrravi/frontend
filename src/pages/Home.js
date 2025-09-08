@@ -12,7 +12,7 @@ export default function Home() {
           <p className="lead mt-3">
             Your one-stop digital solution for cyber services and online applications.
           </p>
-          <Link to="/form-request" className="btn btn-light btn-lg mt-4">
+          <Link to="/Service" className="btn btn-light btn-lg mt-4">
             Apply Now
           </Link>
         </div>
