@@ -1,0 +1,17 @@
+/* src/components/Breadcrumbs.css */
+.breadcrumb {
+  padding: 10px 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 20px; /* Content se thoda gap */
+}
+
+.breadcrumb a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.breadcrumb span {
+  color: #555;
+}

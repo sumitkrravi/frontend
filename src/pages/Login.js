@@ -1,6 +1,6 @@
 // src/pages/Login.js
-import React, { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useContext, useEffect, useRef} from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Player } from "@lottiefiles/react-lottie-player";
@@ -9,6 +9,7 @@ import "../Loader.css";
 
 export default function Login() {
   const navigate = useNavigate();
+  const location = useLocation(); // ✅ add this
   const { darkMode } = useContext(DarkModeContext);
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
@@ -44,21 +45,43 @@ export default function Login() {
       localStorage.setItem("user", JSON.stringify(res.data.user));
       localStorage.setItem("token", res.data.token);
 
-      toast.success(res.data.message || "Login successful!", { position: "top-right", autoClose: 3000 });
+      toast.success(res.data.message || "Login successful!", {
+        position: "top-right",
+        autoClose: 3000,
+      });
 
       if (res.data.user.role === "admin") navigate("/admin-dashboard");
       else navigate("/dashboard");
     } catch (error) {
-      toast.error(error.response?.data?.message || "Invalid credentials!", { position: "top-right", autoClose: 3000 });
+      toast.error(error.response?.data?.message || "Invalid credentials!", {
+        position: "top-right",
+        autoClose: 3000,
+      });
     } finally {
       setLoading(false);
     }
   };
 
+     const toastShown = useRef(false); // ✅ guard
+
+
+  // Show message only if redirected from ServiceDetails
+  useEffect(() => {
+    if (location.state?.showLoginMsg && !toastShown.current) {
+      toast.info("Please login to use this service 🔑");
+      toastShown.current = true; // ✅ prevent duplicate
+
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+  }, [location, navigate]);
+
   return (
     <div
       className="min-vh-100 d-flex align-items-center justify-content-center px-3"
-      style={{ backgroundColor: darkMode ? "#1a1a1a" : "#f8f9fa", color: darkMode ? "#ffffff" : "#212529" }}
+      style={{
+        backgroundColor: darkMode ? "#1a1a1a" : "#f8f9fa",
+        color: darkMode ? "#ffffff" : "#212529",
+      }}
     >
       {/* Loader */}
       {loading && (
@@ -83,7 +106,9 @@ export default function Login() {
           borderRadius: "12px",
           backgroundColor: darkMode ? "#2c2c2c" : "#ffffff",
           color: darkMode ? "#ffffff" : "#212529",
-          boxShadow: darkMode ? "0 8px 24px rgba(0,0,0,0.5)" : "0 8px 24px rgba(0,0,0,0.15)",
+          boxShadow: darkMode
+            ? "0 8px 24px rgba(0,0,0,0.5)"
+            : "0 8px 24px rgba(0,0,0,0.15)",
         }}
       >
         <div className="row g-0 align-items-center">
@@ -97,12 +122,16 @@ export default function Login() {
                 <input
                   name="email"
                   type="email"
-                  className={`form-control ${errors.email ? "is-invalid" : ""} ${darkMode ? "dark-mode-input" : ""}`}
+                  className={`form-control ${
+                    errors.email ? "is-invalid" : ""
+                  } ${darkMode ? "dark-mode-input" : ""}`}
                   placeholder="Enter your email"
                   value={formData.email}
                   onChange={handleChange}
                 />
-                {errors.email && <div className="error-text animate-error">{errors.email}</div>}
+                {errors.email && (
+                  <div className="error-text animate-error">{errors.email}</div>
+                )}
               </div>
 
               {/* Password */}
@@ -111,16 +140,26 @@ export default function Login() {
                 <input
                   name="password"
                   type="password"
-                  className={`form-control ${errors.password ? "is-invalid" : ""} ${darkMode ? "dark-mode-input" : ""}`}
+                  className={`form-control ${
+                    errors.password ? "is-invalid" : ""
+                  } ${darkMode ? "dark-mode-input" : ""}`}
                   placeholder="Enter your password"
                   value={formData.password}
                   onChange={handleChange}
                 />
-                {errors.password && <div className="error-text animate-error">{errors.password}</div>}
+                {errors.password && (
+                  <div className="error-text animate-error">
+                    {errors.password}
+                  </div>
+                )}
               </div>
 
               <div className="d-grid mb-3">
-                <button type="submit" className="btn btn-primary" disabled={loading}>
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  disabled={loading}
+                >
                   {loading ? "Logging in..." : "Login"}
                 </button>
               </div>

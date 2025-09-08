@@ -64,6 +64,7 @@ export default function Navbar() {
         {!user ? (
           <>
             <Link to="/" className="nav-link" onClick={() => setMenuOpen(false)}><FaHome /> Home</Link>
+            <Link to="/Service" className="nav-link" onClick={() => setMenuOpen(false)}><FaUserPlus /> Service</Link>
             <Link to="/login" className="nav-link" onClick={() => setMenuOpen(false)}><FaSignInAlt /> Login</Link>
             <Link to="/signup" className="nav-link" onClick={() => setMenuOpen(false)}><FaUserPlus /> Signup</Link>
           </>
