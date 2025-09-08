@@ -16,3 +16,26 @@
    width: 100px;   /* 👈 size badhao (default 60px tha) */
   height: 100px;  /* optional, agar square shape chahiye */
 }
+
+/* Signup.css empty text error with red text with animation*/
+
+.error-text {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 4px;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(-5px);
+  animation: fadeInUp 0.4s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.is-invalid {
+  border: 1px solid red !important;
+}

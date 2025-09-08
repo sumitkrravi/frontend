@@ -1,111 +1,152 @@
-import React, { useState } from "react";
+// src/pages/Login.js
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { Player } from "@lottiefiles/react-lottie-player";
+import { DarkModeContext } from "../context/DarkModeContext";
 import "../Loader.css";
 
 export default function Login() {
   const navigate = useNavigate();
+  const { darkMode } = useContext(DarkModeContext);
   const [formData, setFormData] = useState({ email: "", password: "" });
-  const [loading, setLoading] = useState(false); // 👈 loader state
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: "" }); // reset field error
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.email.trim()) newErrors.email = "Email is required!";
+    if (!formData.password.trim()) newErrors.password = "Password is required!";
+    return newErrors;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // 👈 loader on
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    setLoading(true);
     try {
       const res = await axios.post(
         "https://e-backend-bwha.onrender.com/api/auth/login",
         formData
       );
 
-      // http://localhost:5000/api/auth/login for local
-      // https://e-backend-bwha.onrender.com/api/auth/login for Online
-
-      console.log("Login response:", res.data);
-
       localStorage.setItem("user", JSON.stringify(res.data.user));
       localStorage.setItem("token", res.data.token);
 
-      toast.success(res.data.message || "Login successful", {
-        theme: "colored",
-      });
+      toast.success(res.data.message || "Login successful!", { position: "top-right", autoClose: 3000 });
 
-      if (res.data.user.role === "admin") {
-        navigate("/admin-dashboard");
-      } else {
-        navigate("/dashboard");
-      }
+      if (res.data.user.role === "admin") navigate("/admin-dashboard");
+      else navigate("/dashboard");
     } catch (error) {
-      console.error("Login error:", error.response?.data);
-      toast.error(error.response?.data?.message || "Something went wrong", {
-        theme: "colored",
-      });
+      toast.error(error.response?.data?.message || "Invalid credentials!", { position: "top-right", autoClose: 3000 });
     } finally {
-      setLoading(false); // 👈 loader off
+      setLoading(false);
     }
   };
 
   return (
-    <div className="min-vh-100 d-flex align-items-center justify-content-center bg-light px-3">
-      {/* 👇 Loader Overlay */}
+    <div
+      className="min-vh-100 d-flex align-items-center justify-content-center px-3"
+      style={{ backgroundColor: darkMode ? "#1a1a1a" : "#f8f9fa", color: darkMode ? "#ffffff" : "#212529" }}
+    >
+      {/* Loader */}
       {loading && (
         <div className="loader-overlay">
           <div className="text-center">
-            <img src="/loader.svg" alt="Loading..." />
+            <Player
+              autoplay
+              loop
+              src="https://assets3.lottiefiles.com/packages/lf20_usmfx6bp.json"
+              style={{ height: "150px", width: "150px" }}
+            />
             <p>Please Wait...</p>
           </div>
         </div>
       )}
 
-      <div className="card shadow p-4 w-100" style={{ maxWidth: "450px" }}>
-        <h2 className="text-center text-primary mb-4">Login</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label className="form-label">Email address</label>
-            <input
-              name="email"
-              type="email"
-              className="form-control"
-              placeholder="Enter your email"
-              required
-              onChange={handleChange}
-              value={formData.email}
+      {/* Login Card */}
+      <div
+        className="card shadow-lg p-4 w-100 my-5"
+        style={{
+          maxWidth: "900px",
+          borderRadius: "12px",
+          backgroundColor: darkMode ? "#2c2c2c" : "#ffffff",
+          color: darkMode ? "#ffffff" : "#212529",
+          boxShadow: darkMode ? "0 8px 24px rgba(0,0,0,0.5)" : "0 8px 24px rgba(0,0,0,0.15)",
+        }}
+      >
+        <div className="row g-0 align-items-center">
+          {/* Left form */}
+          <div className="col-md-6 p-3">
+            <h2 className="text-center text-primary mb-4">Login</h2>
+            <form onSubmit={handleSubmit}>
+              {/* Email */}
+              <div className="mb-3">
+                <label className="form-label">Email address</label>
+                <input
+                  name="email"
+                  type="email"
+                  className={`form-control ${errors.email ? "is-invalid" : ""} ${darkMode ? "dark-mode-input" : ""}`}
+                  placeholder="Enter your email"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+                {errors.email && <div className="error-text animate-error">{errors.email}</div>}
+              </div>
+
+              {/* Password */}
+              <div className="mb-3">
+                <label className="form-label">Password</label>
+                <input
+                  name="password"
+                  type="password"
+                  className={`form-control ${errors.password ? "is-invalid" : ""} ${darkMode ? "dark-mode-input" : ""}`}
+                  placeholder="Enter your password"
+                  value={formData.password}
+                  onChange={handleChange}
+                />
+                {errors.password && <div className="error-text animate-error">{errors.password}</div>}
+              </div>
+
+              <div className="d-grid mb-3">
+                <button type="submit" className="btn btn-primary" disabled={loading}>
+                  {loading ? "Logging in..." : "Login"}
+                </button>
+              </div>
+
+              <div className="text-center">
+                <small>
+                  Don't have an account?{" "}
+                  <Link to="/signup" className="text-decoration-none">
+                    Signup here
+                  </Link>
+                </small>
+              </div>
+            </form>
+          </div>
+
+          {/* Right Lottie illustration */}
+          <div className="col-md-6 text-center p-3">
+            <Player
+              autoplay
+              loop
+              src="https://assets3.lottiefiles.com/packages/lf20_jcikwtux.json"
+              style={{ height: "200px", width: "200px" }}
+              className="d-block mx-auto my-3"
             />
           </div>
-          <div className="mb-3">
-            <label className="form-label">Password</label>
-            <input
-              name="password"
-              type="password"
-              className="form-control"
-              placeholder="Enter your password"
-              required
-              onChange={handleChange}
-              value={formData.password}
-            />
-          </div>
-          <div className="d-grid mb-3">
-            <button
-              type="submit"
-              className="btn btn-primary"
-              disabled={loading} // 👈 disable button while loading
-            >
-              {loading ? "Logging in..." : "Login"}
-            </button>
-          </div>
-          <div className="text-center">
-            <small>
-              Create an account?{" "}
-              <Link to="/signup" className="text-decoration-none">
-                Signup here
-              </Link>
-            </small>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
   );

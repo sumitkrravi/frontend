@@ -1,0 +1,23 @@
+/* Floating animation for illustration */
+.illustration {
+  max-width: 400px;
+  width: 100%;
+  margin-bottom: 2rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Button hover animation */
+.btn-animated {
+  transition: all 0.3s ease;
+}
+
+.btn-animated:hover {
+  transform: scale(1.1); /* thoda bada ho jaaye */
+  box-shadow: 0 0 20px rgba(0, 123, 255, 0.6); /* glow effect */
+}

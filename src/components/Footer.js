@@ -17,10 +17,10 @@ const Footer = () => {
           <h2 className="footer-title">e Cyber Cafe</h2>
           <p className="footer-description">An e-Cyber Cafe is a place where people can use computers and the internet to do both offline and virtual work.</p>
           <div className="footer-social">
-            <a href="#"><FaFacebookF /></a>
-            <a href="#"><FaTwitter /></a>
-            <a href="#"><FaInstagram /></a>
-            <a href="#"><FaLinkedinIn /></a>
+            <a href="www.Facebook.com"><FaFacebookF /></a>
+            <a href="www.Twitter.com"><FaTwitter /></a>
+            <a href="www.Instagram.com"><FaInstagram /></a>
+            <a href="www.Linkedin.com"><FaLinkedinIn /></a>
           </div>
         </div>
 
@@ -39,10 +39,10 @@ const Footer = () => {
         <div className="footer-column">
           <h3>Legal</h3>
           <ul>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">Cookies Policy</a></li>
-            <li><a href="#">Refunds</a></li>
+            <li><a href="/PrivacyPolicy">Privacy Policy</a></li>
+            <li><a href="/Terms&Condition">Terms of Service</a></li>
+            <li><a href="/CookiesPolicy">Cookies Policy</a></li>
+            <li><a href="Refund">Refunds</a></li>
           </ul>
         </div>
 
