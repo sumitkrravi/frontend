@@ -2,8 +2,8 @@ import React from "react";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import services from "../data/ServicesData";
-import Breadcrumbs from "../components/Breadcrumbs";
-import "../components/Breadcrumbs.css";
+// import Breadcrumbs from "../components/Breadcrumbs";
+// import "../components/Breadcrumbs.css";
 
 export default function Service() {
     const [searchTerm, setSearchTerm] = React.useState("");
@@ -31,7 +31,7 @@ export default function Service() {
         <div className="page-container">
             <div className="w-100 mb-2 justify-content-center">
                 <div style={{ maxWidth: "900px", width: "100%" }}>
-                    <Breadcrumbs />
+                    {/* <Breadcrumbs /> */}
                 </div>
             </div>
 
