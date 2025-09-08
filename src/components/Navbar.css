@@ -209,3 +209,19 @@ body.dark .mobile-menu {
 body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* nav bar icon for mobile  */
+.menu-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  transition: transform 0.3s ease;
+}
+
+.menu-icon:hover {
+  transform: scale(1.2) rotate(15deg);
+}
+
+
+
+/* ---------------- End of Navbar CSS ---------------- */

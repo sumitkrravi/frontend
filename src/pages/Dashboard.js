@@ -1,7 +1,7 @@
 // src/pages/Dashboard.js
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify"; // ✅ Toast import
+// import { toast } from "react-toastify"; // ✅ Toast import
 import services from "../data/ServicesData"; // ✅ Import services data
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 import ServiceRequestModal from "../components/ServiceRequestModal";
@@ -22,16 +22,16 @@ export default function Dashboard() {
     }
   }, [navigate]);
 
-  const handleLogout = () => {
-    localStorage.clear();
-    toast.error("You have been logged out", {
-      position: "top-right",
-      autoClose: 2000,
-    });
-    setTimeout(() => {
-      navigate("/login");
-    }, 1000);
-  };
+  // const handleLogout = () => {
+  //   localStorage.clear();
+  //   toast.error("You have been logged out", {
+  //     position: "top-right",
+  //     autoClose: 2000,
+  //   });
+  //   setTimeout(() => {
+  //     navigate("/login");
+  //   }, 1000);
+  // };
 
   if (!user) return null;
 
@@ -69,9 +69,9 @@ export default function Dashboard() {
         <div className="d-flex justify-content-between align-items-center mb-3">
           <h4 className="text-success mb-0">Welcome, {user.name} 🎉</h4>
           <div className="text-center mt-4">
-            <Button variant="danger" onClick={handleLogout}>
+            {/* <Button variant="danger" onClick={handleLogout}>
               Logout
-            </Button>
+            </Button> */}
           </div>
         </div>
         <h5>
@@ -118,8 +118,8 @@ export default function Dashboard() {
       </Container>
 
       {/* Form Requests Table */}
-      <div className="container my-5">
-        <h2 className="text-center text-primary mb-4">Your Form Requests</h2>
+      <div  className="container my-5">
+        <h2 id="Request-track" className="text-center text-primary mb-4">Your Form Requests</h2>
         {formRequests.length === 0 ? (
           <p className="text-center">No Service Request found.</p>
         ) : (

@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaHome, FaSignInAlt, FaUserPlus, FaTachometerAlt, FaSignOutAlt } from "react-icons/fa";
+// import { FaHome, FaSignInAlt, FaUserPlus, FaTachometerAlt, FaSignOutAlt } from "react-icons/fa";
 import "./Navbar.css";
 import { DarkModeContext } from "../context/DarkModeContext";
+import { Button } from "react-bootstrap";
+
 
 export default function Navbar() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -35,16 +37,17 @@ export default function Navbar() {
           <div className="nav-links desktop">
             {!user ? (
               <>
-                <Link to="/" className="nav-link">Home</Link>
-                <Link to="/Service" className="nav-link">Services</Link>
-                <Link to="/login" className="nav-link">Login</Link>
+                <Link to="/" className="nav-link fw-bold">Home</Link>
+                <Link to="/Service" className="nav-link fw-bold">Services</Link>
+                <Link to="/login" className="nav-link fw-bold">Login</Link>
               </>
             ) : (
               <>
-                <Link to="/dashboard" className="nav-link">Dashboard</Link>
-                <span className="nav-link username">Welcome, {user.name.split(" ")[0]}</span>
-                <button className="logout-btn" onClick={handleLogout}>Logout</button>
-              </>
+                <Link to="/dashboard" className="nav-link fw-bold">Dashboard</Link>
+                <span className="nav-link username ">Welcome, {user.name.split(" ")[0]}</span>
+                <Button variant="danger" onClick={handleLogout}>
+                  Logout
+                </Button>              </>
             )}
           </div>
 
@@ -60,7 +63,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className={`mobile-menu ${menuOpen ? "active" : ""}`}>
+      {/* <div className={`mobile-menu ${menuOpen ? "active" : ""}`}>
         {!user ? (
           <>
             <Link to="/" className="nav-link" onClick={() => setMenuOpen(false)}><FaHome /> Home</Link>
@@ -73,6 +76,50 @@ export default function Navbar() {
             <Link to="/dashboard" className="nav-link" onClick={() => setMenuOpen(false)}><FaTachometerAlt /> Dashboard</Link>
             <span className="nav-link username">Welcome, {user.name.split(" ")[0]}</span>
             <button className="logout-btn" onClick={handleLogout}><FaSignOutAlt /> Logout</button>
+          </>
+        )}
+      </div> */}
+
+      <div className={`mobile-menu ${menuOpen ? 'active' : ''}`}>
+        {!user ? (
+          <>
+            <Link to="/" className="nav-link" onClick={() => setMenuOpen(false)}>
+              <img src="/icons/home.svg" alt="Home" className="menu-icon bold-text" />
+              Home
+            </Link>
+            <Link to="/Service" className="nav-link" onClick={() => setMenuOpen(false)}>
+              <img src="/icons/shopping-cart.svg" alt="Service" className="menu-icon" />
+              Service
+            </Link>
+            <Link to="/login" className="nav-link" onClick={() => setMenuOpen(false)}>
+              <img src="/icons/login.svg" alt="Login" className="menu-icon" />
+              Login
+            </Link>
+            <Link to="/signup" className="nav-link" onClick={() => setMenuOpen(false)}>
+              <img src="/icons/circle-user.svg" alt="Register" className="menu-icon" />
+              Register
+            </Link>
+            <Link to="/teams" className="nav-link" onClick={() => setMenuOpen(false)}>
+              <img src="/icons/users-alt.svg" alt="Teams" className="menu-icon" />
+              Teams
+            </Link>
+
+          </>
+        ) : (
+          <>
+            <Link to="/dashboard" className="nav-link" onClick={() => setMenuOpen(false)}>
+              <img src="/icons/home.svg" alt="Dashboard" className="menu-icon" />
+              Dashboard
+            </Link>
+            <a href="#Request-track" className="nav-link">
+              <img src="/icons/track.svg" alt="Check Status" className="menu-icon" />
+
+              Go to Your Requests
+            </a>
+            <Button variant="danger" onClick={handleLogout}>
+              Logout
+            </Button>
+
           </>
         )}
       </div>
