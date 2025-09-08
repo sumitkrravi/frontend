@@ -19,13 +19,18 @@ export default function ServiceRequestModal({ service, onClose }) {
   // Handle input change
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    if (name === "file") {
+
+    if (name === "mobile") {
+      // sirf digits aur max 10
+      if (/^\d{0,10}$/.test(value)) {
+        setFormData({ ...formData, mobile: value });
+      }
+    } else if (name === "file") {
       setFormData({ ...formData, file: files[0] });
     } else {
       setFormData({ ...formData, [name]: value });
     }
 
-    // Clear error on change
     setErrors({ ...errors, [name]: "" });
   };
 
@@ -33,7 +38,12 @@ export default function ServiceRequestModal({ service, onClose }) {
   const validate = () => {
     let tempErrors = {};
     if (!formData.name.trim()) tempErrors.name = "Name is required";
-    if (!formData.mobile.trim()) tempErrors.mobile = "Mobile number is required";
+
+    if (!formData.mobile.trim()) {
+      tempErrors.mobile = "Mobile number is required";
+    } else if (formData.mobile.length !== 10) {
+      tempErrors.mobile = "Mobile number must be 10 digits";
+    }
 
     if (!formData.email.trim()) {
       tempErrors.email = "Email is required";
@@ -125,7 +135,7 @@ export default function ServiceRequestModal({ service, onClose }) {
               Mobile No <span style={{ color: "red" }}>*</span>
             </label>
             <input
-              type="number"
+              type="text"
               placeholder="Enter your mobile number"
               className={`form-control ${errors.mobile ? "is-invalid" : ""}`}
               name="mobile"
