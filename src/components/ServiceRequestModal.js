@@ -109,7 +109,7 @@ export default function ServiceRequestModal({ service, onClose }) {
               Mobile No <span style={{ color: "red" }}>*</span>
             </label>
             <input
-              type="text"
+              type="number"
               className={`form-control ${errors.mobile ? "is-invalid" : ""}`}
               name="mobile"
               value={formData.mobile}
