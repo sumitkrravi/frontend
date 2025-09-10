@@ -11,6 +11,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
 import Service from "./pages/Service";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Teams from "./pages/Teams";
 
 // ✅ Toastify imports
 import { ToastContainer } from "react-toastify";
@@ -64,6 +65,7 @@ function App() {
               {/* Other Routes */}
               <Route path="/form-request" element={<FormRequest />} />
               <Route path="/service" element={<Service />} />
+              <Route path="/teams" element={<Teams />} />
 
               {/* 404 Page */}
               <Route path="*" element={<NotFound />} />

@@ -1,0 +1,112 @@
+.teams-container {
+  padding: 50px 20px;
+  text-align: center;
+  background: linear-gradient(to right, #c9f0a1, #55bcd6);
+  min-height: 100vh;
+}
+
+.teams-container h1 {
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  justify-content: center;
+}
+
+.team-card {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.team-photo {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 3px solid #ddd;
+}
+
+.team-card h2 {
+  margin: 10px 0 5px 0;
+  font-size: 1.3rem;
+  color: #222;
+}
+
+.team-card h4 {
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: #777;
+}
+
+.team-card p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* ✅ RESPONSIVENESS */
+
+/* Small phones */
+@media (max-width: 480px) {
+  .teams-container {
+    padding: 30px 15px;
+  }
+
+  .teams-container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+  }
+
+  /* .team-card {
+    padding:9;
+  } */
+
+  .team-photo {
+    width: 180px;
+    height: 180px;
+  }
+
+  .team-card h2 {
+    font-size: 1.1rem;
+  }
+
+  .team-card p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Laptops */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .team-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Large screens */
+@media (min-width: 1201px) {
+  .team-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
