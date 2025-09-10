@@ -3,28 +3,28 @@ import "./Teams.css";
 
 const contributors = [
   {
-    name: "Sumit Sharma",
-    role: "Frontend Developer",
+    name: "Gajendra Kr Ravidas",
+    role: "Founder & Full Stack Developer",
     photo: "https://res.cloudinary.com/dncdnjsw9/image/upload/v1757507804/Picsart_25-08-17_15-57-27-783_n5d5uw.png",
-    description: "Sumit designed and developed the user interface of the website, making it responsive and user-friendly using React and Bootstrap.",
+    description: "I started e-Cyber Cafe to make online work simple and fast. Our aim is to help everyone get digital services without any stress.",
   },
   {
-    name: "Anjali Verma",
-    role: "Backend Developer",
-    photo: "/team/anjali.jpg",
-    description: "Anjali built the backend using Node.js and MongoDB, ensuring smooth data flow between frontend and server.",
+    name: "Sumit Kr Ravi",
+    role: "Co-Founder & Frontend Developer",
+    photo: "https://res.cloudinary.com/dncdnjsw9/image/upload/v1757510999/Picsart_25-09-10_18-55-53-749_hunawx.png",
+    description: "At e-Cyber Cafe, I believe in teamwork and trust. We are working to give people smooth and quick online support.",
   },
   {
-    name: "Rohit Singh",
-    role: "UI/UX Designer",
-    photo: "/team/rohit.jpg",
-    description: "Rohit created the visual design, color palette, and structured layout for better user experience.",
+    name: "Sweta Kumari",
+    role: "Data Analyst",
+    photo: "https://res.cloudinary.com/dncdnjsw9/image/upload/v1757511548/Picsart_25-09-10_19-08-39-945_oqowp9.png ",
+    description: "We are here to guide you step by step. Our focus is on clear, friendly, and fast service.",
   },
   {
-    name: "Priya Gupta",
+    name: "Pawan Kr Ravidas",
     role: "Project Manager",
-    photo: "/team/priya.jpg",
-    description: "Priya coordinated the project workflow, managed tasks, and ensured timely delivery of the website.",
+    photo: "https://res.cloudinary.com/dncdnjsw9/image/upload/v1757512141/49_igd85w.png",
+    description: "Our team works every day to make sure you get the right help at the right time.",
   },
 ];
 
