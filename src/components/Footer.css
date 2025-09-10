@@ -97,3 +97,14 @@ justify-content: center;
 }
 }
 
+/* Dashboard footer */
+.dashboard-footer {
+  background: #0d6efd;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.dashboard-footer-content p {
+  margin: 5px 0;
+}

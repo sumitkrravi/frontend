@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import {
   FaFacebookF,
   FaTwitter,
@@ -7,20 +8,38 @@ import {
 } from "react-icons/fa";
 import "./Footer.css";
 
-
 const Footer = () => {
+  const location = useLocation();
+  const isDashboard = location.pathname.startsWith("/dashboard");
+
+  // ---------- Dashboard Footer ----------
+  if (isDashboard) {
+    return (
+      <footer className="dashboard-footer">
+        <div className="dashboard-footer-content">
+          <p>© 2025 e-Cyber Cafe | Dashboard Area</p>
+          <p>Need help? Contact support@ecybercafe.com</p>
+        </div>
+      </footer>
+    );
+  }
+
+  // ---------- Public Footer ----------
   return (
     <footer className="custom-footer">
       <div className="footer-content">
         {/* LEFT SECTION */}
         <div className="footer-column">
           <h2 className="footer-title">e Cyber Cafe</h2>
-          <p className="footer-description">An e-Cyber Cafe is a place where people can use computers and the internet to do both offline and virtual work.</p>
+          <p className="footer-description">
+            An e-Cyber Cafe is a place where people can use computers and the
+            internet to do both offline and virtual work.
+          </p>
           <div className="footer-social">
-            <a href="www.Facebook.com"><FaFacebookF /></a>
-            <a href="www.Twitter.com"><FaTwitter /></a>
-            <a href="www.Instagram.com"><FaInstagram /></a>
-            <a href="www.Linkedin.com"><FaLinkedinIn /></a>
+            <a href="https://www.facebook.com"><FaFacebookF /></a>
+            <a href="https://www.twitter.com"><FaTwitter /></a>
+            <a href="https://www.instagram.com"><FaInstagram /></a>
+            <a href="https://www.linkedin.com"><FaLinkedinIn /></a>
           </div>
         </div>
 
@@ -42,20 +61,20 @@ const Footer = () => {
             <li><a href="/PrivacyPolicy">Privacy Policy</a></li>
             <li><a href="/Terms&Condition">Terms of Service</a></li>
             <li><a href="/CookiesPolicy">Cookies Policy</a></li>
-            <li><a href="Refund">Refunds</a></li>
+            <li><a href="/Refund">Refunds</a></li>
           </ul>
         </div>
 
         {/* ADDITIONAL SECTION (Contact Info) */}
         <div className="footer-column">
           <h3>Contact Information</h3>
-          <p>Email: helpsumitravi@gmail.com </p>
+          <p>Email: helpsumitravi@gmail.com</p>
           <p>Phone: +91 9876543210</p>
           <p>Address: Ranchi, Jharkhand, IN</p>
         </div>
       </div>
 
-      {/* BOTTOM SECTION (Contact Info + Copyright) */}
+      {/* BOTTOM SECTION */}
       <div className="footer-bottom">
         <p>&copy; e-Cyber Cafe All rights reserved</p>
       </div>
