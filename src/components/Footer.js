@@ -1,5 +1,4 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
 import {
   FaFacebookF,
   FaTwitter,
@@ -9,17 +8,23 @@ import {
 import "./Footer.css";
 
 const Footer = () => {
-  const location = useLocation();
-  const isDashboard = location.pathname.startsWith("/dashboard");
+  // ✅ login check (localStorage me token ho to user login maan lo)
+  const isLoggedIn = !!localStorage.getItem("token");
 
   // ---------- Dashboard Footer ----------
-  if (isDashboard) {
+  if (isLoggedIn) {
     return (
       <footer className="dashboard-footer">
         <div className="dashboard-footer-content">
-          <p>© 2025 e-Cyber Cafe | Dashboard Area</p>
-          <p>Need help? Contact support@ecybercafe.com</p>
+          <p>© 2025 e-Cyber Cafe | All rights reserved.</p>
+          <p>Need help? Contact helpsumitravi@gmail.com</p>
         </div>
+        <div className="footer-social">
+            <a href="https://www.facebook.com"><FaFacebookF /></a>
+            <a href="https://www.twitter.com"><FaTwitter /></a>
+            <a href="https://www.instagram.com"><FaInstagram /></a>
+            <a href="https://www.linkedin.com"><FaLinkedinIn /></a>
+          </div>
       </footer>
     );
   }
@@ -74,7 +79,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* BOTTOM SECTION */}
       <div className="footer-bottom">
         <p>&copy; e-Cyber Cafe All rights reserved</p>
       </div>

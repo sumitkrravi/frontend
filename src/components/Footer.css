@@ -99,10 +99,10 @@ justify-content: center;
 
 /* Dashboard footer */
 .dashboard-footer {
-  background: #0d6efd;
+  background: #070a0ed8;
   color: white;
   text-align: center;
-  padding: 20px;
+  padding: 10px;
 }
 
 .dashboard-footer-content p {

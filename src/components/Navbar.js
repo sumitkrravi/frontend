@@ -1,15 +1,19 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import { FaHome, FaSignInAlt, FaUserPlus, FaTachometerAlt, FaSignOutAlt } from "react-icons/fa";
 import "./Navbar.css";
 import { DarkModeContext } from "../context/DarkModeContext";
 import { Button } from "react-bootstrap";
 
-
 export default function Navbar() {
-  const user = JSON.parse(localStorage.getItem("user"));
-  const navigate = useNavigate();
+  let user = null;
+  try {
+    user = JSON.parse(localStorage.getItem("user") || "null");
+  } catch (error) {
+    console.error("Invalid JSON in localStorage:", error);
+    user = null;
+  }
 
+  const navigate = useNavigate();
   const { darkMode, setDarkMode } = useContext(DarkModeContext); // ✅ global context
   const [menuOpen, setMenuOpen] = useState(false);
 
