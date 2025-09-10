@@ -44,6 +44,7 @@ export default function Navbar() {
                 <Link to="/" className="nav-link fw-bold">Home</Link>
                 <Link to="/Service" className="nav-link fw-bold">Services</Link>
                 <Link to="/teams" className="nav-link fw-bold">Meet Our Teams</Link>
+                <Link to="https://sarkariresultinfos.com/" target="blank" className="nav-link fw-bold">Jobs</Link>
                 <Link to="/login" className="nav-link fw-bold">Login</Link>
               </>
             ) : (
@@ -109,6 +110,10 @@ export default function Navbar() {
             <Link to="/signup" className="nav-link" onClick={() => setMenuOpen(false)}>
               <img src="/icons/circle-user.svg" alt="Register" className="menu-icon" />
               Register
+            </Link>
+            <Link to="https://sarkariresultinfos.com/" className="nav-link" onClick={() => setMenuOpen(false)}>
+              <img src="/icons/circle-user.svg" alt="Register" className="menu-icon" />
+              Jobs
             </Link>
             <Link to="/teams" className="nav-link" onClick={() => setMenuOpen(false)}>
               <img src="/icons/users-alt.svg" alt="Teams" className="menu-icon" />
