@@ -18,6 +18,7 @@ const Footer = () => {
         <div className="dashboard-footer-content">
           <p>© 2025 e-Cyber Cafe | All rights reserved.</p>
           <p>Need help? Contact helpsumitravi@gmail.com</p>
+          <link to="/PrivacyPolicy">Privacy Policy</link> | <link to="/Terms&Condition">Terms of Service</link> | <link to="/CookiesPolicy">Cookies Policy</link> | <link to="/Refund">Refunds</link>  
         </div>
         <div className="footer-social">
             <a href="https://www.facebook.com"><FaFacebookF /></a>
