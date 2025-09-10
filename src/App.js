@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
 import Service from "./pages/Service";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 // ✅ Toastify imports
 import { ToastContainer } from "react-toastify";
@@ -19,6 +20,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { DarkModeProvider } from "./context/DarkModeContext";
 
 function App() {
+  const token = localStorage.getItem("token");
+
   return (
     <DarkModeProvider>
       <Router>
@@ -27,21 +30,42 @@ function App() {
 
           <div className="flex-grow-1">
             <Routes>
+              {/* Public Routes */}
               <Route path="/" element={<Home />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/login" element={<Login />} />
 
-              {/* Admin dashboard route */}
-              <Route path="/admin" element={<AdminDashboard />} />
+              {/* Agar user login hai to login/signup wapas na khule */}
+              <Route
+                path="/signup"
+                element={token ? <Navigate to="/dashboard" /> : <Signup />}
+              />
+              <Route
+                path="/login"
+                element={token ? <Navigate to="/dashboard" /> : <Login />}
+              />
 
-              {/* User dashboard route */}
-              <Route path="/dashboard" element={<Dashboard />} />
+              {/* Protected Routes */}
+              <Route
+                path="/admin"
+                element={
+                  <ProtectedRoute>
+                    <AdminDashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <Dashboard />
+                  </ProtectedRoute>
+                }
+              />
 
-              {/* Other routes */}
+              {/* Other Routes */}
               <Route path="/form-request" element={<FormRequest />} />
-              <Route path="/Service" element={<Service />} />
+              <Route path="/service" element={<Service />} />
 
-              {/* Wrong route ke liye */}
+              {/* 404 Page */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>

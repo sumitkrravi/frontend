@@ -1,5 +1,5 @@
 // src/pages/Login.js
-import React, { useState, useContext, useEffect, useRef} from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -9,15 +9,32 @@ import "../Loader.css";
 
 export default function Login() {
   const navigate = useNavigate();
-  const location = useLocation(); // ✅ add this
+  const location = useLocation();
   const { darkMode } = useContext(DarkModeContext);
+
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
+  const toastShown = useRef(false); // ✅ guard for toast
+
+  // ✅ Agar already login hai to login page access na kare
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+
+    if (token) {
+      if (user.role === "admin") {
+        navigate("/admin", { replace: true });
+      } else {
+        navigate("/dashboard", { replace: true });
+      }
+    }
+  }, [navigate]);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: "" }); // reset field error
+    setErrors({ ...errors, [e.target.name]: "" });
   };
 
   const validateForm = () => {
@@ -45,32 +62,22 @@ export default function Login() {
       localStorage.setItem("user", JSON.stringify(res.data.user));
       localStorage.setItem("token", res.data.token);
 
-      toast.success(res.data.message || "Login successful!", {
-        position: "top-right",
-        autoClose: 3000,
-      });
+      toast.success(res.data.message || "Login successful!");
 
-      if (res.data.user.role === "admin") navigate("/admin-dashboard");
+      if (res.data.user.role === "admin") navigate("/admin");
       else navigate("/dashboard");
     } catch (error) {
-      toast.error(error.response?.data?.message || "Invalid credentials!", {
-        position: "top-right",
-        autoClose: 3000,
-      });
+      toast.error(error.response?.data?.message || "Invalid credentials!");
     } finally {
       setLoading(false);
     }
   };
 
-     const toastShown = useRef(false); // ✅ guard
-
-
-  // Show message only if redirected from ServiceDetails
+  // ✅ Agar ServiceDetails se aya hai to info toast dikhao
   useEffect(() => {
     if (location.state?.showLoginMsg && !toastShown.current) {
       toast.info("Please login to use this service 🔑");
-      toastShown.current = true; // ✅ prevent duplicate
-
+      toastShown.current = true;
       navigate(location.pathname, { replace: true, state: {} });
     }
   }, [location, navigate]);
