@@ -9,7 +9,7 @@ import FormRequest from "./pages/FormRequest";
 import Dashboard from "./pages/Dashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
-import Service from "./pages/Service";
+import Services from "./pages/Services";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Teams from "./pages/Teams";
 
@@ -64,7 +64,7 @@ function App() {
 
               {/* Other Routes */}
               <Route path="/form-request" element={<FormRequest />} />
-              <Route path="/services" element={<Service />} />
+              <Route path="/services" element={<Services />} />
               <Route path="/teams" element={<Teams />} />
 
               {/* 404 Page */}
