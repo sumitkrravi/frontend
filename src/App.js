@@ -13,6 +13,7 @@ import Services from "./pages/Services";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Teams from "./pages/Teams";
 import Contact from "./pages/Contact";
+import About from "./pages/About";
 
 // ✅ Toastify imports
 import { ToastContainer } from "react-toastify";
@@ -68,6 +69,7 @@ function App() {
               <Route path="/services" element={<Services />} />
               <Route path="/teams" element={<Teams />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/about" element={<About />} />
 
               {/* 404 Page */}
               <Route path="*" element={<NotFound />} />

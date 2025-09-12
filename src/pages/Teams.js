@@ -16,7 +16,7 @@ const contributors = [
   },
   {
     name: "Sweta Kumari",
-    role: "Data Analyst",
+    role: "Advertising Manager",
     photo: "https://res.cloudinary.com/dncdnjsw9/image/upload/v1757511548/Picsart_25-09-10_19-08-39-945_oqowp9.png ",
     description: "We are here to guide you step by step. Our focus is on clear, friendly, and fast service.",
   },
