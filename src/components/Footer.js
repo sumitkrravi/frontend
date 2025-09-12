@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   FaFacebookF,
   FaTwitter,
@@ -8,8 +8,16 @@ import {
 import "./Footer.css";
 
 const Footer = () => {
-  // ✅ login check (localStorage me token ho to user login maan lo)
   const isLoggedIn = !!localStorage.getItem("token");
+
+  // Screen width detect
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // ---------- Dashboard Footer ----------
   if (isLoggedIn) {
@@ -29,7 +37,35 @@ const Footer = () => {
     );
   }
 
-  // ---------- Public Footer ----------
+  // ---------- Mobile Footer ----------
+  if (isMobile) {
+    return (
+      <footer className="custom-footer mobile-footer">
+        <div className="footer-content">
+          <div className="footer-column">
+            <h3>e Cyber Cafe</h3>
+            <div className="quick-links-mobile">
+              <a href="/">Home</a>
+              <a href="/services">Service</a>
+              <a href="/contact">Contact</a>
+              <a href="/about">About</a>
+            </div>
+            <div className="footer-social">
+          <a href="https://www.facebook.com"><FaFacebookF /></a>
+          <a href="https://www.twitter.com"><FaTwitter /></a>
+          <a href="https://www.instagram.com"><FaInstagram /></a>
+          <a href="https://www.linkedin.com"><FaLinkedinIn /></a>
+        </div>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>&copy; 2025 e-Cyber Cafe</p>
+        </div>
+      </footer>
+    );
+  }
+
+  // ---------- Desktop Footer ----------
   return (
     <footer className="custom-footer">
       <div className="footer-content">
@@ -48,7 +84,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* CENTER SECTION (Quick Links) */}
+        {/* Quick Links */}
         <div className="footer-column">
           <h3>Quick Links</h3>
           <ul>
@@ -59,7 +95,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* RIGHT SECTION (Legal Info) */}
+        {/* Legal */}
         <div className="footer-column">
           <h3>Legal</h3>
           <ul>
@@ -70,7 +106,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* ADDITIONAL SECTION (Contact Info) */}
+        {/* Contact Info */}
         <div className="footer-column">
           <h3>Contact Information</h3>
           <p>Email: helpsumitravi@gmail.com</p>

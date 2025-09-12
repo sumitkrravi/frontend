@@ -12,7 +12,7 @@ flex-wrap: wrap;
 max-width: 1200px;
 margin: auto;
 padding-bottom: 30px;
-gap: 40px;
+gap: 70px;
 }
 
 .footer-column {
@@ -107,4 +107,33 @@ justify-content: center;
 
 .dashboard-footer-content p {
   margin: 5px 0;
+}
+
+/* MODIFIED FOR Mobile VIEW footer */
+.mobile-footer {
+  text-align: center;
+  padding: 5px 10px;   /* 👈 kam padding */
+}
+
+.quick-links-mobile {
+  display: flex;
+  justify-content: center;
+  gap: 10px;  /* 👈 kam gap */
+  flex-wrap: wrap;
+}
+
+.quick-links-mobile a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 13px;  /* 👈 text chhota */
+  padding: 2px 4px; /* 👈 link ka padding bhi kam */
+}
+
+.quick-links-mobile a:hover {
+  color: #00bfff;
+}
+
+.mobile-footer .footer-bottom {
+  margin-top: -35px;   /* 👈 kam space */
+  font-size: 12px;   /* 👈 copyright chhota */
 }
