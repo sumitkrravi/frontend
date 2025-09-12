@@ -42,7 +42,7 @@ export default function Navbar() {
             {!user ? (
               <>
                 <Link to="/" className="nav-link fw-bold">Home</Link>
-                <Link to="/Service" className="nav-link fw-bold">Services</Link>
+                <Link to="/Services" className="nav-link fw-bold">Services</Link>
                 <Link to="/teams" className="nav-link fw-bold">Meet Our Teams</Link>
                 <Link to="https://sarkariresultinfos.com/" target="blank" className="nav-link fw-bold">Jobs</Link>
                 <Link to="/login" className="nav-link fw-bold">Login</Link>
@@ -99,7 +99,7 @@ export default function Navbar() {
               <img src="/icons/home.svg" alt="Home" className="menu-icon bold-text" />
               Home
             </Link>
-            <Link to="/Service" className="nav-link" onClick={() => setMenuOpen(false)}>
+            <Link to="/Services" className="nav-link" onClick={() => setMenuOpen(false)}>
               <img src="/icons/shopping-cart.svg" alt="Service" className="menu-icon" />
               Service
             </Link>

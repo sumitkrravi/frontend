@@ -64,7 +64,7 @@ function App() {
 
               {/* Other Routes */}
               <Route path="/form-request" element={<FormRequest />} />
-              <Route path="/service" element={<Service />} />
+              <Route path="/services" element={<Service />} />
               <Route path="/teams" element={<Teams />} />
 
               {/* 404 Page */}
