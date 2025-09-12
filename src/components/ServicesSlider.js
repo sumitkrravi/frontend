@@ -1,37 +1,41 @@
 // src/components/ServicesSlider.js
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import './ServicesSlider.css'; // CSS for cards and arrows
-
-// Custom Arrow Components with size and styling
-const NextArrow = ({ onClick }) => (
-  <div className="custom-arrow next" onClick={onClick}>
-    <FaArrowRight size={20} />
-  </div>
-);
-
-const PrevArrow = ({ onClick }) => (
-  <div className="custom-arrow prev" onClick={onClick}>
-    <FaArrowLeft size={20} />
-  </div>
-);
+import './ServicesSlider.css'; // CSS for cards and dots
 
 export default function ServicesSlider() {
+  const [render, setRender] = useState(false);
+
+  useEffect(() => {
+    // refresh bug fix: slider ko dobara render karna
+    setRender(true);
+  }, []);
+
+  if (!render) return null;
+
   const settings = {
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
-    arrows: true,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    dots: true,
+    arrows: false,
     responsive: [
-      { breakpoint: 992, settings: { slidesToShow: 2 } },
-      { breakpoint: 768, settings: { slidesToShow: 1 } },
+      {
+        breakpoint: 1024, // tablet/laptop
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 600, // mobile
+        settings: {
+          slidesToShow: 1,
+        },
+      },
     ],
   };
 
@@ -72,4 +76,4 @@ export default function ServicesSlider() {
       </div>
     </section>
   );
-            }
+}

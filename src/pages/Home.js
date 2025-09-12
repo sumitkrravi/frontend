@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ServicesSlider from "../components/ServicesSlider";
+import PhotoSlider from "../components/ServicesSlider.js";
 
 export default function Home() {
   return (
@@ -20,7 +20,7 @@ export default function Home() {
 
       {/* Service Card Slider Section */}
       <section>
-          <ServicesSlider />
+          <PhotoSlider />
       </section>
 
       {/* Call to Action */}
