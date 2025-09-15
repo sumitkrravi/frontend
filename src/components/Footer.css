@@ -46,7 +46,7 @@ color: #00bfff;
 .footer-column h3 {
 font-size: 1.2rem;
 color: #f0f0f0;
-margin-bottom: 12px;
+margin-bottom: 10px;
 }
 
 .footer-column ul {
@@ -125,8 +125,8 @@ justify-content: center;
 .quick-links-mobile a {
   color: #ccc;
   text-decoration: none;
-  font-size: 13px;  /* 👈 text chhota */
-  padding: 2px 4px; /* 👈 link ka padding bhi kam */
+  font-size: 15px;  /* 👈 text chhota */
+  padding: 5px 15px; /* 👈 link ka padding bhi kam */
 }
 
 .quick-links-mobile a:hover {

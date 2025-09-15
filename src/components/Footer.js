@@ -8,7 +8,7 @@ import {
 import "./Footer.css";
 
 const Footer = () => {
-  const isLoggedIn = !!localStorage.getItem("token");
+  // const isLoggedIn = !!localStorage.getItem("token");
 
   // Screen width detect
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -20,22 +20,22 @@ const Footer = () => {
   }, []);
 
   // ---------- Dashboard Footer ----------
-  if (isLoggedIn) {
-    return (
-      <footer className="dashboard-footer">
-        <div className="dashboard-footer-content">
-          <p>© 2025 e-Cyber Cafe | All rights reserved.</p>
-          <p>Need help? Contact helpsumitravi@gmail.com</p>
-        </div>
-        <div className="footer-social">
-          <a href="https://www.facebook.com"><FaFacebookF /></a>
-          <a href="https://www.twitter.com"><FaTwitter /></a>
-          <a href="https://www.instagram.com"><FaInstagram /></a>
-          <a href="https://www.linkedin.com"><FaLinkedinIn /></a>
-        </div>
-      </footer>
-    );
-  }
+  // if (isLoggedIn) {
+  //   return (
+  //     <footer className="dashboard-footer">
+  //       <div className="dashboard-footer-content">
+  //         <p>© 2025 e-Cyber Cafe | All rights reserved.</p>
+  //         <p>Need help? Contact helpsumitravi@gmail.com</p>
+  //       </div>
+  //       <div className="footer-social">
+  //         <a href="https://www.facebook.com"><FaFacebookF /></a>
+  //         <a href="https://www.twitter.com"><FaTwitter /></a>
+  //         <a href="https://www.instagram.com"><FaInstagram /></a>
+  //         <a href="https://www.linkedin.com"><FaLinkedinIn /></a>
+  //       </div>
+  //     </footer>
+  //   );
+  // }
 
   // ---------- Mobile Footer ----------
   if (isMobile) {
@@ -43,8 +43,8 @@ const Footer = () => {
       <footer className="custom-footer mobile-footer">
         <div className="footer-content">
           <div className="footer-column">
-            <h3>e Cyber Cafe</h3>
-            <div className="quick-links-mobile">
+            <h3 className="fw-bold" >e Cyber Cafe</h3>
+            <div className="quick-links-mobile fw-bold">
               <a href="/">Home</a>
               <a href="/services">Service</a>
               <a href="/contact">Contact</a>
@@ -71,7 +71,7 @@ const Footer = () => {
       <div className="footer-content">
         {/* LEFT SECTION */}
         <div className="footer-column">
-          <h2 className="footer-title">e Cyber Cafe</h2>
+          <h2 className="footer-title fw-bold">e Cyber Cafe</h2>
           <p className="footer-description">
             An e-Cyber Cafe is a place where people can use computers and the
             internet to do both offline and virtual work.
