@@ -57,9 +57,11 @@ export default function Navbar() {
               Check Status
             </a>
 
-                <Button variant="danger" onClick={handleLogout}>
-                  Logout
-                </Button>              </>
+            <Button variant="danger" onClick={handleLogout}>
+              <img src="/icons/user-logout.svg" alt="Logout" className="menu-icon" />
+              Logout
+            </Button>            
+            </>
             )}
           </div>
 
@@ -129,13 +131,12 @@ export default function Navbar() {
             </Link>
             <a href="#Request-track" className="nav-link">
               <img src="/icons/track.svg" alt="Check Status" className="menu-icon" />
-
               Go to Your Requests
             </a>
             <Button variant="danger" onClick={handleLogout}>
+              <img src="/icons/user-logout.svg" alt="Logout" className="menu-icon" />
               Logout
             </Button>
-
           </>
         )}
       </div>
