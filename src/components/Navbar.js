@@ -54,14 +54,14 @@ export default function Navbar() {
 
                 <a href="#Request-track" className="nav-link fw-bold">
 
-              Check Status
-            </a>
+                  Check Status
+                </a>
 
-            <Button variant="danger" onClick={handleLogout}>
-              <img src="/icons/user-logout.svg" alt="Logout" className="menu-icon" />
-              Logout
-            </Button>            
-            </>
+                <Button variant="danger" onClick={handleLogout}>
+                  <img src="/icons/user-logout.svg" alt="Logout" className="menu-icon" />
+                  Logout
+                </Button>
+              </>
             )}
           </div>
 
