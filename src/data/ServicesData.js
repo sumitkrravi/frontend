@@ -25,6 +25,12 @@ const services = [
       action: "Apply",
     },
     {
+      name: "All Types Examination Forms",
+      image: "https://cdn-icons-png.flaticon.com/512/3062/3062634.png",
+      Price : "₹50-200",
+      action: "Apply",
+    },
+    {
       name: "Aadhar Download",
       image: "https://uidai.gov.in/images/langPage/Page-1.svg",
       Price : "₹100",
@@ -70,12 +76,6 @@ const services = [
       name: "Residential Certificate (Jharkhand)",
       image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Jharkhand_Rajakiya_Chihna.svg/1200px-Jharkhand_Rajakiya_Chihna.svg.png",
       Price : "₹200",
-      action: "Apply",
-    },
-    {
-      name: "All Types Examination Forms",
-      image: "https://cdn-icons-png.flaticon.com/512/3062/3062634.png",
-      Price : "₹50-200",
       action: "Apply",
     }
   ];
