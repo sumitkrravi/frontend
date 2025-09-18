@@ -55,6 +55,12 @@ export default function ServiceRequestModal({ service, onClose }) {
       }
     }
 
+    // Check consent checkbox
+    const consentCheckbox = document.getElementById("consentCheck");
+    if (!consentCheckbox || !consentCheckbox.checked) {
+      tempErrors.consent = "You need to check the box to proceed";
+    }
+
     return tempErrors;
   };
 
@@ -86,7 +92,7 @@ export default function ServiceRequestModal({ service, onClose }) {
 
       toast.success("Request submitted successfully!", {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 5000,
       });
       setFormData({
         name: "",
@@ -182,6 +188,20 @@ export default function ServiceRequestModal({ service, onClose }) {
               name="file"
               onChange={handleChange}
             />
+          </div>
+
+          {/* checkbox  */}
+          <div className="mb-3 form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              id="consentCheck"
+              required
+              defaultChecked
+            />
+            <label className="form-check-label" htmlFor="consentCheck">
+              I consent to the processing of my personal data for this service request. <span style={{ color: "red" }}>*</span>
+            </label>
           </div>
 
           <div className="d-flex justify-content-end">
