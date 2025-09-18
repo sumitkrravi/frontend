@@ -110,8 +110,9 @@ const Footer = () => {
         <div className="footer-column">
           <h3>Contact Information</h3>
           <p>Email: helpsumitravi@gmail.com</p>
-          <p>Phone: +91 9876543210</p>
+          <p>Phone: +91 7370927343</p>
           <p>Address: Ranchi, Jharkhand, IN</p>
+          
         </div>
       </div>
 
