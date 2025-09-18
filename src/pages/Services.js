@@ -61,7 +61,7 @@ export default function Service() {
                                     />
                                     <Card.Body>
                                         <Card.Title>{service.name}</Card.Title>
-                                        {service.Price && <Card.Text>Price: {service.Price}</Card.Text>}
+                                        {/* {service.Price && <Card.Text>Price: {service.Price}</Card.Text>} */}
                                         <Button
                                             variant="primary"
                                             onClick={() => handleCardClick(service)}

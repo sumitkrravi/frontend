@@ -106,6 +106,7 @@ export default function Dashboard() {
                   />
                   <Card.Body>
                     <Card.Title>{service.name}</Card.Title>
+                    {service.Price && <Card.Text>Price: {service.Price}</Card.Text>}
                     <Button variant="primary" onClick={() => handleCardClick(service)}>
                       {service.action}
                     </Button>
@@ -118,7 +119,7 @@ export default function Dashboard() {
       </Container>
 
       {/* Form Requests Table */}
-      <div  className="container my-5">
+      <div className="container my-5">
         <h2 id="Request-track" className="text-center text-primary mb-4">Your Form Requests</h2>
         {formRequests.length === 0 ? (
           <p className="text-center">No Service Request found.</p>
@@ -141,9 +142,8 @@ export default function Dashboard() {
                     <td>{request.formName}</td>
                     <td>
                       <span
-                        className={`badge bg-${
-                          request.status === "Completed" ? "success" : "warning"
-                        }`}
+                        className={`badge bg-${request.status === "Completed" ? "success" : "warning"
+                          }`}
                       >
                         {request.status}
                       </span>
