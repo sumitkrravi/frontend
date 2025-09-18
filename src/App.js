@@ -11,7 +11,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
 import Services from "./pages/Services";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Teams from "./pages/Teams";
+// import Teams from "./pages/Teams";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 
@@ -67,7 +67,7 @@ function App() {
               {/* Other Routes */}
               <Route path="/form-request" element={<FormRequest />} />
               <Route path="/services" element={<Services />} />
-              <Route path="/teams" element={<Teams />} />
+              {/* <Route path="/teams" element={<Teams />} /> */}
               <Route path="/contact" element={<Contact />} />
               <Route path="/about" element={<About />} />
 

@@ -81,14 +81,14 @@ export default function About() {
                     </div>
                     <div className="col-md-4 text-center">
                         <img
-                            src="https://res.cloudinary.com/dncdnjsw9/image/upload/v1757512141/49_igd85w.png"
+                        src="https://res.cloudinary.com/dncdnjsw9/image/upload/v1757511548/Picsart_25-09-10_19-08-39-945_oqowp9.png "
                             alt="Support"
                             className="rounded-circle mb-3"
                             width="150"
                             height="150"
-                        />
-                        <h5 className="fw-bold">Pankaj kr Ravidas</h5>
-                        <p className="text-muted">Customer Support</p>
+                            />
+                        <h5 className="fw-bold">Sweta Kumari</h5>
+                        <p className="text-muted">Advertising Manger</p>
                     </div>
                     <div className="col-md-4 text-center">
                         <img
