@@ -107,6 +107,17 @@ export default function Dashboard() {
                   <Card.Body>
                     <Card.Title>{service.name}</Card.Title>
                     {service.Price && <Card.Text>Price: {service.Price}</Card.Text>}
+                    <Card.Text
+                      style={{
+                        color:
+                          service["Service Available"] === true ||
+                            service["Service Available"] === "Yes"
+                            ? "green"
+                            : "red"
+                      }}
+                    >
+                      {/* Serive Tittle */} {service["Service Available"] === true || service["Service Available"] === "Yes" ? "Service Available" : "Service Not Available"}
+                    </Card.Text>
                     <Button variant="primary" onClick={() => handleCardClick(service)}>
                       {service.action}
                     </Button>
