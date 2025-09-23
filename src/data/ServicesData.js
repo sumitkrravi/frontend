@@ -77,7 +77,19 @@ const services = [
       image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Jharkhand_Rajakiya_Chihna.svg/1200px-Jharkhand_Rajakiya_Chihna.svg.png",
       Price : "₹200",
       action: "Apply",
-    }
+    },
+    {
+      name: "Caste Certificate (Bihar)",
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Bihar_Government_Banner.png/1200px-Bihar_Government_Banner.png",
+      Price : "₹200",
+      action: "Apply",
+    },
+    {
+      name: "Residential Certificate (Bihar)",
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Bihar_Government_Banner.png/1200px-Bihar_Government_Banner.png",
+      Price : "₹200",
+      action: "Apply",
+    },
   ];
 
 export default services;
