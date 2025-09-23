@@ -61,6 +61,17 @@ export default function Service() {
                                     />
                                     <Card.Body>
                                         <Card.Title>{service.name}</Card.Title>
+                                        <Card.Text
+                                            style={{
+                                                color:
+                                                    service["Service Available"] === true ||
+                                                        service["Service Available"] === "Yes"
+                                                        ? "green"
+                                                        : "red"
+                                            }}
+                                        >
+                                            {/* Serive Tittle */} {service["Service Available"] === true || service["Service Available"] === "Yes" ? "Service Available" : "Service Not Available"}
+                                        </Card.Text>
                                         {/* {service.Price && <Card.Text>Price: {service.Price}</Card.Text>} */}
                                         <Button
                                             variant="primary"
