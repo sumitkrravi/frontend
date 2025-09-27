@@ -45,7 +45,17 @@ export default function JobDetail() {
       )}
 
       {/* Buttons Section */}
-      <div className="mb-4">
+      <div className="mb-4 text-center ">
+        {post.requestLink && (
+          <a
+            href={post.requestLink}
+            target="_blank"
+            rel="noreferrer"
+            className="btn btn-success me-2 mb-2"
+          >
+            Request for Apply
+          </a>
+        )}
         {post.applyLink && (
           <a
             href={post.applyLink}
