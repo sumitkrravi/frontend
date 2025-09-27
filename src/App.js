@@ -14,6 +14,9 @@ import ProtectedRoute from "./components/ProtectedRoute";
 // import Teams from "./pages/Teams";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
+import JobsPage from "./pages/JobsPage";
+import JobDetail from "./pages/JobDetail";
+
 
 // ✅ Toastify imports
 import { ToastContainer } from "react-toastify";
@@ -70,6 +73,9 @@ function App() {
               {/* <Route path="/teams" element={<Teams />} /> */}
               <Route path="/contact" element={<Contact />} />
               <Route path="/about" element={<About />} />
+              <Route path="/jobs" element={<JobsPage />} /> {/* Jobs Page Route */}
+              <Route path="/jobs/:id" element={<JobDetail />} />     {/* Job Detail */}
+
 
               {/* 404 Page */}
               <Route path="*" element={<NotFound />} />

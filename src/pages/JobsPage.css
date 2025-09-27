@@ -1,0 +1,20 @@
+.jobs-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.jobs-container .btn {
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 10px 15px;
+}
+
+.jobs-container .card {
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  border-radius: 10px;
+}
+
+.jobs-container .card-header {
+  font-size: 18px;
+}
