@@ -1,9 +1,3 @@
-Samajh gaya 👍. Tumne default **Create React App README.md** ka content paste kiya hai, aur chahte ho ki usko apne project **e-Cyber Cafe** ke liye customize karun. Main tumhe ek **clean aur project-specific README.md** banakar deta hoon jo professional lage aur directly tumhare project ko represent kare.
-
-Yeh raha customized version 👇
-
----
-
 # e-Cyber Cafe
 
 A modern web application built with **React.js** (frontend) and **Node.js/Express** (backend) to provide a **digital cyber cafe experience**.
