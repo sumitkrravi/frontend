@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import services from "../data/ServicesData";
+import "./Dashboard.css"; // apna CSS alag file me rakho
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 import ServiceRequestModal from "../components/ServiceRequestModal";
 
