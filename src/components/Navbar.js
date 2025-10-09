@@ -123,6 +123,10 @@ export default function Navbar() {
               <img src="/icons/users-alt.svg" alt="Teams" className="menu-icon" />
               About us
             </Link>
+            <Link to="/tools" className="nav-link" onClick={() => setMenuOpen(false)}>
+              <img src="/icons/tools.svg" alt="Teams" className="menu-icon" />
+              Tools
+            </Link>
 
           </>
         ) : (
