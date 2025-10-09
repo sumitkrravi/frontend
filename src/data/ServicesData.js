@@ -14,7 +14,7 @@
 const services = [
   {
     name: "Life Insurance Policy (LIC)",
-    image: "https://upload.wikimedia.org/wikipedia/en/thumb/4/4f/Life_Insurance_Corporation_of_India_%28logo%29.svg/375px-Life_Insurance_Corporation_of_India_%28logo%29.svg.png",
+    image: "https://licindia.in/documents/d/guest/lic_log_updated",
     Price: "₹500",
     action: "Apply",
     "Service Available": true,
