@@ -112,15 +112,15 @@ export default function Navbar() {
               Login
             </Link>
             <Link to="/signup" className="nav-link" onClick={() => setMenuOpen(false)}>
-              <img src="/icons/circle-user.svg" alt="Register" className="menu-icon" />
+              <img src="/icons/signup.svg" alt="Register" className="menu-icon" />
               Register
             </Link>
             <Link to="/Jobs" className="nav-link" onClick={() => setMenuOpen(false)}>
-              <img src="/icons/circle-user.svg" alt="Register" className="menu-icon" />
+              <img src="/icons/jobs.svg" alt="Register" className="menu-icon" />
               Jobs
             </Link>
             <Link to="/about" className="nav-link" onClick={() => setMenuOpen(false)}>
-              <img src="/icons/users-alt.svg" alt="Teams" className="menu-icon" />
+              <img src="/icons/about.svg" alt="Teams" className="menu-icon" />
               About us
             </Link>
             <Link to="/tools" className="nav-link" onClick={() => setMenuOpen(false)}>
