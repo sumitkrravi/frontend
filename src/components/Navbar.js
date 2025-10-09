@@ -46,6 +46,8 @@ export default function Navbar() {
                 <Link to="/about" className="nav-link fw-bold">About us</Link>
                 <Link to="Jobs" className="nav-link fw-bold">Jobs</Link>
                 <Link to="/login" className="nav-link fw-bold">Login</Link>
+                <Link to="/tools" className="nav-link fw-bold">Tools</Link>
+
               </>
             ) : (
               <>

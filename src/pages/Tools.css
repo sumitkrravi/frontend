@@ -1,0 +1,48 @@
+.compress-container {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 30px;
+  text-align: center;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  font-family: "Poppins", sans-serif;
+}
+
+.upload-box input {
+  margin-top: 10px;
+}
+
+.slider-section {
+  margin: 20px 0;
+}
+
+input[type="range"] {
+  width: 100%;
+}
+
+.btn-compress, .btn-download {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.btn-download {
+  background-color: #28a745;
+}
+
+.btn-compress:hover {
+  background-color: #0056b3;
+}
+
+.btn-download:hover {
+  background-color: #218838;
+}
+
+.result-section {
+  margin-top: 20px;
+}

@@ -16,6 +16,7 @@ import Contact from "./pages/Contact";
 import About from "./pages/About";
 import JobsPage from "./pages/JobsPage";
 import JobDetail from "./pages/JobDetail";
+import Tools from "./pages/Tools";  // Tools Page Import
 
 
 // ✅ Toastify imports
@@ -75,6 +76,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/jobs" element={<JobsPage />} /> {/* Jobs Page Route */}
               <Route path="/jobs/:id" element={<JobDetail />} />     {/* Job Detail */}
+              <Route path="/tools" element={<Tools />} />  {/* Tools Page Route */}
 
 
               {/* 404 Page */}
