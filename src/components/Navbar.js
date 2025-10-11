@@ -59,16 +59,16 @@ export default function Navbar() {
                   Check Status
                 </a> */}
 
-                <Button variant="danger" onClick={handleLogout}>
-                  <img src="/icons/power.svg" alt="Logout" className="menu-icon" />
+                <Button variant="(color)" onClick={handleLogout}>
+                  <img src="/icons/power.svg" alt="Logout" className="menu-icon-logout" />
                 </Button>
               </>
             )}
           </div>
 
-          <div className={`dark-toggle ${darkMode ? "rotate" : ""}`} onClick={toggleDarkMode}>
+          {/* <div className={`dark-toggle ${darkMode ? "rotate" : ""}`} onClick={toggleDarkMode}>
             {darkMode ? "🌞" : "🌙"}
-          </div>
+          </div> */}
 
           <div className={`hamburger ${menuOpen ? "open" : ""}`} onClick={toggleMenu}>
             <span></span>

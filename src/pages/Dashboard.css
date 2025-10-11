@@ -11,6 +11,57 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 20px;
+  transition: width 0.28s ease, transform 0.28s ease, padding 0.28s ease;
+  overflow: hidden;
+}
+
+/* Closed: collapse width on desktop and slide out on mobile */
+.sidebar.closed {
+  width: 0;
+  padding: 0;
+}
+
+/* On small screens make sidebar overlay and slide with transform */
+@media (max-width: 767.98px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1050;
+    width: 250px; /* keep full width when open; closed uses transform */
+    transform: translateX(0);
+  }
+  .sidebar.closed {
+    transform: translateX(-100%);
+    width: 250px; /* width stays but moved off-screen */
+  }
+
+  /* backdrop when sidebar open */
+  .content-overlay {
+    display: none;
+  }
+  .content-overlay.visible {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.38);
+    z-index: 1040;
+  }
+}
+
+/* On desktop, prevent overlay from appearing */
+@media (min-width: 768px) {
+  .content-overlay {
+    display: none !important;
+  }
+}
+
+/* optional: hide overflowing contents when closed */
+.sidebar.closed .mb-5,
+.sidebar.closed nav,
+.sidebar.closed .mt-auto {
+  display: none;
 }
 
 .sidebar .profile-section {

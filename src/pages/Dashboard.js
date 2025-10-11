@@ -11,6 +11,7 @@ export default function Dashboard() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedService, setSelectedService] = useState(null);
   const [activeSection, setActiveSection] = useState("profile"); // 👈 Track sidebar section
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const navigate = useNavigate();
 
@@ -23,6 +24,14 @@ export default function Dashboard() {
     }
   }, [navigate]);
 
+  // set initial sidebar state based on window size and keep it responsive on resize
+  useEffect(() => {
+    const handleResize = () => setIsSidebarOpen(window.innerWidth >= 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  
   if (!user) return null;
 
   // Dummy form requests (later backend fetch)
@@ -47,7 +56,11 @@ export default function Dashboard() {
   return (
     <div className="d-flex" style={{ minHeight: "100vh" }}>
       {/* Sidebar */}
-      <div className="bg-primary text-white p-4 d-flex flex-column" style={{ width: "250px" }}>
+      <div
+        className={`sidebar bg-primary text-white d-flex flex-column ${isSidebarOpen ? "open" : "closed"}`}
+        style={{ width: isSidebarOpen ? "250px" : "0" }}
+      >
+        
         <div className="mb-5 text-center">
           <div
             className="bg-white text-primary rounded-circle d-flex align-items-center justify-content-center mx-auto"
@@ -100,6 +113,22 @@ export default function Dashboard() {
 
       {/* Main Content */}
       <div className="flex-grow-1 p-4">
+        {/* Hamburger toggle (visible on all sizes) */}
+        <Button
+          variant="outline-primary"
+          className="mb-3"
+          onClick={() => setIsSidebarOpen((s) => !s)}
+          aria-label="Toggle sidebar"
+        >
+          ☰
+        </Button>
+
+        {/* Backdrop for small devices (click to close) */}
+        <div
+          className={`content-overlay ${isSidebarOpen ? "visible" : ""}`}
+          onClick={() => setIsSidebarOpen(false)}
+        />
+        
         {/* Profile Section */}
         {activeSection === "profile" && (
           <div className="card shadow p-4 mb-4">
@@ -139,33 +168,35 @@ export default function Dashboard() {
               {filteredServices.length === 0 ? (
                 <p className="text-muted">No services found.</p>
               ) : (
-                filteredServices.map((service, idx) => (
-                  <Col key={idx} sm={12} md={6} lg={4} className="mb-4">
-                    <Card className="shadow-sm h-100 text-center">
-                      <Card.Img
-                        variant="top"
-                        src={service.image}
-                        style={{ height: "150px", objectFit: "contain", padding: "1rem" }}
-                      />
-                      <Card.Body>
-                        <Card.Title>{service.name}</Card.Title>
-                        {service.Price && <Card.Text>Price: {service.Price}</Card.Text>}
-                        <Card.Text
-                          style={{
-                            color: service["Service Available"] ? "green" : "red",
-                          }}
-                        >
-                          {service["Service Available"]
-                            ? "Service Available"
-                            : "Service Not Available"}
-                        </Card.Text>
-                        <Button variant="primary" onClick={() => handleCardClick(service)}>
-                          {service.action}
-                        </Button>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                ))
+                filteredServices.map((service, idx) => {
+                  return (
+                    <Col key={idx} sm={12} md={6} lg={4} className="mb-4">
+                      <Card className="shadow-sm h-100 text-center">
+                        <Card.Img
+                          variant="top"
+                          src={service.image}
+                          style={{ height: "150px", objectFit: "contain", padding: "1rem" }}
+                        />
+                        <Card.Body>
+                          <Card.Title>{service.name}</Card.Title>
+                          {service.Price && <Card.Text>Price: {service.Price}</Card.Text>}
+                          <Card.Text
+                            style={{
+                              color: service["Service Available"] ? "green" : "red",
+                            }}
+                          >
+                            {service["Service Available"]
+                              ? "Service Available"
+                              : "Service Not Available"}
+                          </Card.Text>
+                          <Button variant="primary" onClick={() => handleCardClick(service)}>
+                            {service.action}
+                          </Button>
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                  );
+                })
               )}
             </Row>
           </Container>
