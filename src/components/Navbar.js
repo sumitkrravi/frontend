@@ -54,10 +54,10 @@ export default function Navbar() {
                 <Link to="/dashboard" className="nav-link fw-bold">Dashboard</Link>
                 <span className="nav-link username ">Welcome, {user.name.split(" ")[0]}</span>
 
-                <a href="#Request-track" className="nav-link fw-bold">
+                {/* <a href="#Request-track" className="nav-link fw-bold">
 
                   Check Status
-                </a>
+                </a> */}
 
                 <Button variant="danger" onClick={handleLogout}>
                   <img src="/icons/user-logout.svg" alt="Logout" className="menu-icon" />
