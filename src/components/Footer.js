@@ -8,7 +8,7 @@ import {
 import "./Footer.css";
 
 const Footer = () => {
-  // const isLoggedIn = !!localStorage.getItem("token");
+  const isLoggedIn = !!localStorage.getItem("token");
 
   // Screen width detect
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -20,22 +20,22 @@ const Footer = () => {
   }, []);
 
   // ---------- Dashboard Footer ----------
-  // if (isLoggedIn) {
-  //   return (
-  //     <footer className="dashboard-footer">
-  //       <div className="dashboard-footer-content">
-  //         <p>© 2025 e-Cyber Cafe | All rights reserved.</p>
-  //         <p>Need help? Contact helpsumitravi@gmail.com</p>
-  //       </div>
-  //       <div className="footer-social">
-  //         <a href="https://www.facebook.com"><FaFacebookF /></a>
-  //         <a href="https://www.twitter.com"><FaTwitter /></a>
-  //         <a href="https://www.instagram.com"><FaInstagram /></a>
-  //         <a href="https://www.linkedin.com"><FaLinkedinIn /></a>
-  //       </div>
-  //     </footer>
-  //   );
-  // }
+  if (isLoggedIn) {
+    return (
+      <footer className="dashboard-footer">
+        <div className="dashboard-footer-content">
+          <p>© 2025 e-Cyber Cafe | All rights reserved.</p>
+          <p>Need help? Contact helpsumitravi@gmail.com</p>
+        </div>
+        <div className="footer-social">
+          <a href="https://www.facebook.com"><FaFacebookF /></a>
+          <a href="https://www.twitter.com"><FaTwitter /></a>
+          <a href="https://www.instagram.com"><FaInstagram /></a>
+          <a href="https://www.linkedin.com"><FaLinkedinIn /></a>
+        </div>
+      </footer>
+    );
+  }
 
   // ---------- Mobile Footer ----------
   if (isMobile) {

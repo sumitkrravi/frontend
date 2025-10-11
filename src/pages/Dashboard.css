@@ -1,127 +1,103 @@
-.dashboard-container {
-  display: flex;
+.dashboard-wrapper {
   min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.dashboard-header {
+  background-color: #5469d4; /* blue header */
+  color: white;
+  height: 65px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .sidebar {
   width: 250px;
-  background: #1e293b;
-  color: white;
+  background-color: #fff;
+  border-right: 1px solid #dee2e6;
+  padding: 20px 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 20px;
-  transition: width 0.28s ease, transform 0.28s ease, padding 0.28s ease;
-  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-/* Closed: collapse width on desktop and slide out on mobile */
-.sidebar.closed {
-  width: 0;
-  padding: 0;
+.menu-list {
+  list-style: none;
+  padding-left: 0;
 }
 
-/* On small screens make sidebar overlay and slide with transform */
-@media (max-width: 767.98px) {
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    z-index: 1050;
-    width: 250px; /* keep full width when open; closed uses transform */
-    transform: translateX(0);
-  }
-  .sidebar.closed {
-    transform: translateX(-100%);
-    width: 250px; /* width stays but moved off-screen */
-  }
-
-  /* backdrop when sidebar open */
-  .content-overlay {
-    display: none;
-  }
-  .content-overlay.visible {
-    display: block;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.38);
-    z-index: 1040;
-  }
+.menu-list li {
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
 }
 
-/* On desktop, prevent overlay from appearing */
-@media (min-width: 768px) {
-  .content-overlay {
-    display: none !important;
-  }
+.menu-list li:hover {
+  background-color: #e9ecef;
 }
 
-/* optional: hide overflowing contents when closed */
-.sidebar.closed .mb-5,
-.sidebar.closed nav,
-.sidebar.closed .mt-auto {
-  display: none;
+.menu-list li.active {
+  background-color: #0d6efd;
+  color: #fff;
 }
 
-.sidebar .profile-section {
+.logout-section {
   text-align: center;
-}
-
-.sidebar .avatar {
-  width: 80px;
-  border-radius: 50%;
   margin-bottom: 10px;
 }
 
-.menu button, .logout button {
+.main-content {
+  padding: 20px;
+  width: 100%;
+}
+
+/* Sidebar Mobile Toggle */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: -250px;
+    top: 65px;
+    bottom: 0;
+    z-index: 90;
+  }
+
+  .sidebar.open {
+    left: 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  }
+}
+
+.profile-hover {
+  position: relative;
+  cursor: pointer;
+  outline: none;
+}
+
+/* hidden by default */
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.4rem);
+  min-width: 160px;
+  z-index: 1055;
+}
+
+/* show on hover and keyboard focus */
+.profile-hover:hover .profile-dropdown,
+.profile-hover:focus-within .profile-dropdown {
   display: block;
+}
+
+/* small visual tweak */
+.profile-dropdown .btn {
   width: 100%;
-  background: none;
-  border: none;
-  color: white;
-  padding: 10px;
   text-align: left;
-  cursor: pointer;
-}
-
-.menu button:hover, .logout button:hover {
-  background: #334155;
-}
-
-.content {
-  flex-grow: 1;
-  padding: 20px;
-  background: #f8fafc;
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 15px;
-}
-
-.service-card {
-  background: white;
-  border: 1px solid #ddd;
-  padding: 20px;
-  border-radius: 12px;
-  text-align: center;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.service-card:hover {
-  background: #e2e8f0;
-}
-
-.status-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: white;
-}
-
-.status-table th, .status-table td {
-  border: 1px solid #ddd;
-  padding: 10px;
 }
