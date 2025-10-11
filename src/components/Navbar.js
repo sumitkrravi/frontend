@@ -59,10 +59,10 @@ export default function Navbar() {
                   Check Status
                 </a> */}
 
-                <Button variant="danger" onClick={handleLogout}>
+                {/* <Button variant="danger" onClick={handleLogout}>
                   <img src="/icons/user-logout.svg" alt="Logout" className="menu-icon" />
                   Logout
-                </Button>
+                </Button> */}
               </>
             )}
           </div>
