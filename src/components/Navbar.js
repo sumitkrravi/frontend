@@ -57,7 +57,7 @@ export default function Navbar() {
             ) : (
               // ✅ If user is logged in (Home Page only)
               <>
-                
+                <Link to="/contact" className="nav-link fw-bold">Contact Us</Link>
                 <Link to="/dashboard" className="nav-link fw-bold">Dashboard</Link>
                 <span className="nav-link username">
                   {user.name ? `Hi, ${user.name}` : "User"}
@@ -86,33 +86,41 @@ export default function Navbar() {
         {!user ? (
           <>
             <Link to="/" className="nav-link" onClick={() => setMenuOpen(false)}>
-              Home
+              <img src="/icons/home.svg" alt="Home" className="menu-icon bold-text" />              Home
             </Link>
             <Link to="/Services" className="nav-link" onClick={() => setMenuOpen(false)}>
+            <img src="/icons/shopping-cart.svg" alt="Service" className="menu-icon" />
               Services
             </Link>
             <Link to="/Jobs" className="nav-link" onClick={() => setMenuOpen(false)}>
+            <img src="/icons/jobs.svg" alt="Register" className="menu-icon" />
               Jobs
             </Link>
             <Link to="/about" className="nav-link" onClick={() => setMenuOpen(false)}>
+            <img src="/icons/about.svg" alt="Teams" className="menu-icon" />
               About Us
             </Link>
             <Link to="/tools" className="nav-link" onClick={() => setMenuOpen(false)}>
+            <img src="/icons/tools.svg" alt="Teams" className="menu-icon" />
               Tools
             </Link>
             <Link to="/login" className="nav-link" onClick={() => setMenuOpen(false)}>
+            <img src="/icons/login.svg" alt="Teams" className="menu-icon" />
               Login
             </Link>
             <Link to="/signup" className="nav-link" onClick={() => setMenuOpen(false)}>
+            <img src="/icons/signup.svg" alt="Teams" className="menu-icon" />
               Register
             </Link>
           </>
         ) : (
           <>
             <Link to="/dashboard" className="nav-link" onClick={() => setMenuOpen(false)}>
+            <img src="/icons/dashboard.svg" alt="Teams" className="menu-icon" />
               Dashboard
             </Link>
             <span className="nav-link username">
+              <img src="/icons/circle-user.svg" alt="Teams" className="menu-icon" />
               {user.name ? `Hi, ${user.name}` : "User"}
             </span>
             <Button variant="danger" size="sm" onClick={handleLogout}>

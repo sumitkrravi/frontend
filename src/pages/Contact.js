@@ -144,10 +144,39 @@ export default function Contact() {
         </div>
 
         <div className="contact-info text-center">
-          <h2>Contact Information</h2>
-          <p><strong>Address:</strong> Harmu Ranchi Jharkhand India</p>
-          <p><strong>Phone:</strong> +91 7370927343</p>
-          <p><strong>Email:</strong> helpsumitravi@gmail.com</p>
+          <div className="footer-contact">
+            <h2>Contact Information</h2>
+
+            {/* Address */}
+            <p className="contact-item">
+              <img src="/icons/adress.svg" alt="Address" className="menu-icon" />
+              <strong>Harmu, Ranchi, Jharkhand, India</strong>
+            </p>
+
+            {/* Phone */}
+            <p className="contact-item">
+              <img src="/icons/phone.svg" alt="Phone" className="menu-icon" />
+              <strong>
+                <a href="tel:+917004444937" style={{ textDecoration: 'none', color: 'inherit' }}>
+                  +91 7004444937
+                </a>
+              </strong>
+            </p>
+
+            {/* Email */}
+            <p className="contact-item">
+              <img src="/icons/email.svg" alt="Email" className="menu-icon" />
+              <strong>
+                <a
+                  href="mailto:helpsumitravi@gmail.com?subject=Inquiry%20from%20Website&body=Hello%20Sumit,%0D%0A%0D%0AI%20wanted%20to%20ask%20about%20..."
+                  style={{ textDecoration: 'none', color: 'inherit' }}
+                >
+                  helpsumitravi@gmail.com
+                </a>
+              </strong>
+            </p>
+          </div>
+
           <div className="map">
             <iframe
               title="ecybercafe-location"
