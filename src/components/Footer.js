@@ -40,26 +40,27 @@ const Footer = () => {
   // ---------- Mobile Footer ----------
   if (isMobile) {
     return (
-      <footer className="custom-footer mobile-footer">
-        <div className="footer-content">
-          <div className="footer-column">
+      <footer className="dashboard-footer custom-footer mobile-footer">
+        <div className="dashboard-footer-content footer-content">
+          <div className="">
             <h3 className="fw-bold" >e Cyber Cafe</h3>
-            <div className="quick-links-mobile fw-bold">
+            {/* <div className="quick-links-mobile fw-bold">
               <a href="/">Home</a>
               <a href="/services">Service</a>
               <a href="/contact">Contact</a>
               <a href="/about">About</a>
+            </div> */}
+            <div className="dashboard-footer-content">
+              <p>© 2025 e-Cyber Cafe | All rights reserved.</p>
+              <p>Need help? Contact helpsumitravi@gmail.com</p>
             </div>
             <div className="footer-social">
-          <a href="https://www.facebook.com"><FaFacebookF /></a>
-          <a href="https://www.twitter.com"><FaTwitter /></a>
-          <a href="https://www.instagram.com"><FaInstagram /></a>
-          <a href="https://www.linkedin.com"><FaLinkedinIn /></a>
-        </div>
+              <a href="https://www.facebook.com"><FaFacebookF /></a>
+              <a href="https://www.twitter.com"><FaTwitter /></a>
+              <a href="https://www.instagram.com"><FaInstagram /></a>
+              <a href="https://www.linkedin.com"><FaLinkedinIn /></a>
+            </div>
           </div>
-        </div>
-        <div className="footer-bottom">
-          <p>&copy; 2025 e-Cyber Cafe</p>
         </div>
       </footer>
     );
@@ -112,7 +113,7 @@ const Footer = () => {
           <p>Email: helpsumitravi@gmail.com</p>
           <p>Phone: +91 7370927343</p>
           <p>Address: Ranchi, Jharkhand, IN</p>
-          
+
         </div>
       </div>
 

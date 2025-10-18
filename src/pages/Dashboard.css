@@ -68,6 +68,12 @@
     z-index: 90;
   }
 
+  @media (max-width: 768px) {
+  .desktop-logo {
+    display: none; /* hide on mobile */
+  }
+}
+
   .sidebar.open {
     left: 0;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);

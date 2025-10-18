@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Button, Card, Container, Row, Col, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import services from "../data/ServicesData";
 import ServiceRequestModal from "../components/ServiceRequestModal";
 import "./Dashboard.css";
@@ -13,15 +12,24 @@ export default function Dashboard() {
   const [searchTerm, setSearchTerm] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
+  const sidebarRef = useRef();
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    } else {
-      navigate("/login");
-    }
+    if (storedUser) setUser(JSON.parse(storedUser));
+    else navigate("/login");
   }, [navigate]);
+
+  // Auto-close sidebar on outside click
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        setSidebarOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   if (!user) return null;
 
@@ -30,8 +38,8 @@ export default function Dashboard() {
     navigate("/login");
   };
 
-  const filteredServices = services.filter((service) =>
-    service.name.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredServices = services.filter((s) =>
+    s.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const formRequests = [
@@ -61,7 +69,6 @@ export default function Dashboard() {
             </div>
           </div>
         );
-
       case "services":
         return (
           <Container className="py-4">
@@ -76,35 +83,26 @@ export default function Dashboard() {
               />
             </div>
             <Row>
-              {filteredServices.length === 0 ? (
-                <p>No services found.</p>
-              ) : (
-                filteredServices.map((service, idx) => (
-                  <Col key={idx} sm={12} md={6} lg={4} className="mb-4">
-                    <Card className="shadow-sm text-center h-100">
-                      <Card.Img
-                        variant="top"
-                        src={service.image}
-                        style={{ height: "150px", objectFit: "contain", padding: "1rem" }}
-                      />
-                      <Card.Body>
-                        <Card.Title>{service.name}</Card.Title>
-                        {service.Price && <Card.Text>Price: {service.Price}</Card.Text>}
-                        <Card.Text style={{ color: service["Service Available"] ? "green" : "red" }}>
-                          {service["Service Available"] ? "Service Available" : "Service Not Available"}
-                        </Card.Text>
-                        <Button variant="primary" onClick={() => setSelectedService(service)}>
-                          {service.action}
-                        </Button>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                ))
-              )}
+              {filteredServices.map((service, idx) => (
+                <Col key={idx} sm={12} md={6} lg={4} className="mb-4">
+                  <Card className="shadow-sm text-center h-100">
+                    <Card.Img
+                      variant="top"
+                      src={service.image}
+                      style={{ height: "150px", objectFit: "contain", padding: "1rem" }}
+                    />
+                    <Card.Body>
+                      <Card.Title>{service.name}</Card.Title>
+                      <Button variant="primary" onClick={() => setSelectedService(service)}>
+                        {service.action}
+                      </Button>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
             </Row>
           </Container>
         );
-
       case "status":
         return (
           <div className="p-4">
@@ -126,9 +124,7 @@ export default function Dashboard() {
                       <td>{index + 1}</td>
                       <td>{req.formName}</td>
                       <td>
-                        <span
-                          className={`badge bg-${req.status === "Completed" ? "success" : "warning"}`}
-                        >
+                        <span className={`badge bg-${req.status === "Completed" ? "success" : "warning"}`}>
                           {req.status}
                         </span>
                       </td>
@@ -149,7 +145,6 @@ export default function Dashboard() {
             </div>
           </div>
         );
-
       default:
         return null;
     }
@@ -167,35 +162,16 @@ export default function Dashboard() {
           >
             <i className="bi bi-list fs-3"></i>
           </Button>
-          <Link to="/" className="text-white m-0 fw-bold text-decoration-none d-flex align-items-center gap-4">
-            <img src="/logo192.png" alt="logo" width="45" />
+          <Link to="/" className="text-white m-0 fw-bold text-decoration-none d-flex align-items-center gap-3">
+            <img src="/logo192.png" alt="logo" width="45" className="desktop-logo" />
             e-Cyber Cafe
           </Link>
         </div>
 
-        {/* Hamburger toggle (visible on all sizes) */}
-        <Button
-          variant="outline-primary"
-          className="mb-3"
-          onClick={() => setSidebarOpen((s) => !s)}
-          aria-label="Toggle sidebar"
-        >
-          ☰
-        </Button>
-
-
-
         <div className="d-flex align-items-center gap-4 text-white">
           <i className="bi bi-bell fs-5"></i>
           <i className="bi bi-envelope fs-5"></i>
-
-          {/* profile with hover dropdown */}
-          <div
-            className="profile-hover d-flex align-items-center gap-2"
-            tabIndex="0" /* makes it focusable for keyboard users */
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
+          <div className="profile-hover d-flex align-items-center gap-2">
             <img
               src="https://res.cloudinary.com/dncdnjsw9/image/upload/v1757510999/Picsart_25-09-10_18-55-53-749_hunawx.png"
               alt="profile"
@@ -203,19 +179,11 @@ export default function Dashboard() {
               width="35"
               height="35"
             />
-            <span>{user.name.toUpperCase()}</span>
-
-            {/* dropdown shown on hover / focus */}
+            <span>{user.name.split(" ")[0].charAt(0).toUpperCase() + user.name.split(" ")[0].slice(1).toLowerCase()}</span>
             <div className="profile-dropdown bg-white text-dark rounded shadow p-2">
-              <div className="d-flex flex-column">
-                <button
-                  type="button"
-                  className="btn btn-sm btn-outline-danger"
-                  onClick={handleLogout}
-                >
-                  <i className="bi bi-box-arrow-right me-1"></i> Logout
-                </button>
-              </div>
+              <Button variant="danger" size="sm" onClick={handleLogout}>
+                <i className="bi bi-box-arrow-right me-1"></i> Logout
+              </Button>
             </div>
           </div>
         </div>
@@ -224,15 +192,15 @@ export default function Dashboard() {
       {/* Main Area */}
       <div className="d-flex flex-grow-1">
         {/* Sidebar */}
-        <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
-          <ul className="menu-list">
-            <li className={activeSection === "profile" ? "active" : ""} onClick={() => setActiveSection("profile")}>
+        <aside ref={sidebarRef} className={`sidebar ${sidebarOpen ? "open" : ""}`}>
+          <ul className="menu-list d-flex flex-column justify-content-center h-100">
+            <li className={activeSection === "profile" ? "active" : ""} onClick={() => { setActiveSection("profile"); setSidebarOpen(false); }}>
               <i className="bi bi-person-circle me-2"></i> Profile
             </li>
-            <li className={activeSection === "services" ? "active" : ""} onClick={() => setActiveSection("services")}>
+            <li className={activeSection === "services" ? "active" : ""} onClick={() => { setActiveSection("services"); setSidebarOpen(false); }}>
               <i className="bi bi-gear-wide-connected me-2"></i> Services
             </li>
-            <li className={activeSection === "status" ? "active" : ""} onClick={() => setActiveSection("status")}>
+            <li className={activeSection === "status" ? "active" : ""} onClick={() => { setActiveSection("status"); setSidebarOpen(false); }}>
               <i className="bi bi-list-check me-2"></i> Status
             </li>
           </ul>
@@ -247,12 +215,7 @@ export default function Dashboard() {
         <main className="main-content flex-grow-1">{renderContent()}</main>
       </div>
 
-      {selectedService && (
-        <ServiceRequestModal
-          service={selectedService}
-          onClose={() => setSelectedService(null)}
-        />
-      )}
+      {selectedService && <ServiceRequestModal service={selectedService} onClose={() => setSelectedService(null)} />}
     </div>
   );
 }
