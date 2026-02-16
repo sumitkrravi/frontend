@@ -158,7 +158,7 @@ export default function Contact() {
               <img src="/icons/phone.svg" alt="Phone" className="menu-icon" />
               <strong>
                 <a href="tel:+917004444937" style={{ textDecoration: 'none', color: 'inherit' }}>
-                  +91 7004444937
+                  +91 7370927343
                 </a>
               </strong>
             </p>
